@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Compana - Prototype</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-logo">Compana</div>
+    <div class="nav-tag">Beta</div>
+  </nav>
+
+  <!-- LAYOUT -->
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <button class="sidebar-toggle" onclick="toggleSidebar()" title="Toggle menu">
+    <span id="toggle-icon">☰</span>
+  </button>
+  <div class="sidebar-items">
+    <div class="sidebar-item active" title="Home" onclick="activateSidebarItem(0); showScreen('screen-home')">
+      <span class="sidebar-icon">🏠</span>
+      <span class="sidebar-label">Home</span>
+    </div>
+    <div class="sidebar-item" title="E-Learning" onclick="activateSidebarItem(1); showScreen('screen-modules')">
+      <span class="sidebar-icon">🎓</span>
+      <span class="sidebar-label">E-Learning</span>
+    </div>
+    <div class="sidebar-item" title="Community" onclick="activateSidebarItem(2); showScreen('screen-community')">
+      <span class="sidebar-icon">👥</span>
+      <span class="sidebar-label">Community</span>
+    </div>
+    <div class="sidebar-item" title="Resources" onclick="activateSidebarItem(3); showScreen('screen-resources')">
+      <span class="sidebar-icon">📚</span>
+      <span class="sidebar-label">Resources</span>
+    </div>
+    <div class="sidebar-item" title="Manager Dashboard" onclick="activateSidebarItem(4); showScreen('screen-manager')">
+      <span class="sidebar-icon">📊</span>
+      <span class="sidebar-label">Manager Dashboard</span>
+    </div>
+  </div>
+</div>
+
+    <!-- MAIN CONTENT -->
+ <!-- SCREEN: Home -->
+<div class="screen active" id="screen-home">
+  <div class="home-layout">
+
+    <!-- E-Learning Hero (left/main) -->
+    <div class="home-main">
+      <div class="home-elearning-card">
+        <div class="home-elearning-top">
+          <div class="welcome-badge" style="margin-bottom: 16px;">Education For Educators</div>
+          <h1 class="welcome-title" style="text-align:left; font-size:34px;">Welcome to Compana</h1>
+          <p style="font-size:15px; color:var(--muted); line-height:1.75; margin: 12px 0 24px;">Your personalised AI literacy programme — built for UK teachers. Work through bite-sized lessons at your own pace and feel confident using and guiding AI in your classroom.</p>
+          <button class="primary-btn" <button class="primary-btn" onclick="activateSidebarItem(1); showScreen('screen-q1')">Start Your Learning Path →</button>
+          <p class="trust-note" style="text-align:left; margin-top:16px;">✦ Free to use &nbsp;·&nbsp; ✦ No sign-up needed &nbsp;·&nbsp; ✦ Takes ~5 minutes to set up</p>
+        </div>
+        <div class="home-modules-preview">
+          <div class="home-modules-label">Your Modules</div>
+          <div class="home-module-row home-module-unlocked">
+            <div class="home-module-num">01</div>
+            <div class="home-module-name">Understanding the Foundations of AI</div>
+            <span class="home-module-badge badge-open">Open →</span>
+          </div>
+          <div class="home-module-row">
+            <div class="home-module-num">02</div>
+            <div class="home-module-name">The Benefits, Risks &amp; Limitations of AI</div>
+            <span class="home-module-badge badge-locked">🔒</span>
+          </div>
+          <div class="home-module-row">
+            <div class="home-module-num">03</div>
+            <div class="home-module-name">Prompts &amp; Outputs</div>
+            <span class="home-module-badge badge-locked">🔒</span>
+          </div>
+          <div class="home-module-row">
+            <div class="home-module-num">04</div>
+            <div class="home-module-name">Academic Integrity &amp; Ethics</div>
+            <span class="home-module-badge badge-locked">🔒</span>
+          </div>
+          <div class="home-module-row">
+            <div class="home-module-num">05</div>
+            <div class="home-module-name">Integrating AI into Your Teaching</div>
+            <span class="home-module-badge badge-locked">🔒</span>
+          </div>
+          <div class="home-module-row">
+            <div class="home-module-num">06</div>
+            <div class="home-module-name">How Students Can Safely Use AI</div>
+            <span class="home-module-badge badge-locked">🔒</span>
+          </div>
+          <div class="home-module-row">
+            <div class="home-module-num">07</div>
+            <div class="home-module-name">Navigating Future AI Evolution</div>
+            <span class="home-module-badge badge-locked">🔒</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column -->
+    <div class="home-sidebar-col">
+
+      <!-- Community preview -->
+      <div class="home-widget" onclick="activateSidebarItem(1); showScreen('screen-community')" style="cursor:pointer;">
+        <div class="home-widget-header">
+          <span class="home-widget-icon">👥</span>
+          <span class="home-widget-title">Community</span>
+          <span class="home-widget-link">View all →</span>
+        </div>
+        <p class="home-widget-sub">"Together, we go further — every question asked helps every teacher learn."</p>
+        <div class="home-community-thread">
+          <div class="home-thread-avatar">SR</div>
+          <div>
+            <div class="home-thread-name">Sarah R. <span style="color:var(--muted); font-weight:400;">· St. Cuthbert's Secondary</span></div>
+            <div class="home-thread-body">My Year 10s keep using ChatGPT to write their essays entirely — has anyone found a good approach?</div>
+          </div>
+        </div>
+        <div class="home-community-thread">
+          <div class="home-thread-avatar">JO</div>
+          <div>
+            <div class="home-thread-name">James O. <span style="color:var(--muted); font-weight:400;">· Northgate Sixth Form</span></div>
+            <div class="home-thread-body">Tip: I use AI to generate multiple perspectives on events as discussion starters — students love fact-checking it.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resources preview -->
+      <div class="home-widget" onclick="activateSidebarItem(2); showScreen('screen-resources')" style="cursor:pointer;">
+        <div class="home-widget-header">
+          <span class="home-widget-icon">📚</span>
+          <span class="home-widget-title">Resources</span>
+          <span class="home-widget-link">View all →</span>
+        </div>
+        <p class="home-widget-sub">Trusted AI tools reviewed against UK government and school policy.</p>
+        <div class="home-resource-row">
+          <div class="home-resource-dot dot-green"></div>
+          <div class="home-resource-name">Oak National Academy — Aila</div>
+          <span class="home-resource-tag">Free</span>
+        </div>
+        <div class="home-resource-row">
+          <div class="home-resource-dot dot-green"></div>
+          <div class="home-resource-name">Sparx Learning</div>
+          <span class="home-resource-tag">School-provided</span>
+        </div>
+        <div class="home-resource-row">
+          <div class="home-resource-dot dot-green"></div>
+          <div class="home-resource-name">Tassomai</div>
+          <span class="home-resource-tag">School-provided</span>
+        </div>
+      </div>
+
+      <!-- Manager dashboard preview -->
+      <div class="home-widget" onclick="activateSidebarItem(3); showScreen('screen-manager')" style="cursor:pointer;">
+        <div class="home-widget-header">
+          <span class="home-widget-icon">📊</span>
+          <span class="home-widget-title">Manager Dashboard</span>
+          <span class="home-widget-link">View all →</span>
+        </div>
+        <p class="home-widget-sub">Track staff progress across all modules and lessons.</p>
+        <div class="home-dash-stats">
+          <div class="home-dash-stat">
+            <div class="home-dash-value">24</div>
+            <div class="home-dash-label">Active teachers</div>
+          </div>
+          <div class="home-dash-stat">
+            <div class="home-dash-value">17</div>
+            <div class="home-dash-label">Module 1 done</div>
+          </div>
+          <div class="home-dash-stat">
+            <div class="home-dash-value">8.4m</div>
+            <div class="home-dash-label">Avg. per lesson</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+      <!-- SCREEN 2: Question 1 -->
+      <div class="screen" id="screen-q1">
+        <div class="container">
+          <div class="progress-wrap">
+            <div class="progress-labels"><span>Question 1 of 5</span><span>0%</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+          </div>
+          <div class="question-chip">Diagnostic</div>
+          <h2 class="question-title">What type of school do you teach in?</h2>
+          <div class="options-stack" id="q1-options">
+            <button class="option-btn" onclick="selectOption('q1', 0, 'screen-q2')">Primary School</button>
+            <button class="option-btn" onclick="selectOption('q1', 1, 'screen-q2')">Secondary School</button>
+            <button class="option-btn" onclick="selectOption('q1', 2, 'screen-q2')">Sixth-Form / College</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCREEN 3: Question 2 -->
+      <div class="screen" id="screen-q2">
+        <div class="container">
+          <div class="progress-wrap">
+            <div class="progress-labels"><span>Question 2 of 5</span><span>20%</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:25%"></div></div>
+          </div>
+          <div class="question-chip">Diagnostic</div>
+          <h2 class="question-title">How old are you?</h2>
+          <p class="question-sub">Type your age below and press Continue.</p>
+          <input class="text-input" type="number" id="age-input" min="18" max="99" placeholder="e.g. 34" />
+          <p class="input-error" id="age-error"></p>
+          <div class="nav-btns" style="margin-top: 24px;">
+            <button class="primary-btn" onclick="submitAge()">Continue →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCREEN 4: Question 3 -->
+      <div class="screen" id="screen-q3">
+        <div class="container">
+          <div class="progress-wrap">
+            <div class="progress-labels"><span>Question 3 of 5</span><span>40%</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:50%"></div></div>
+          </div>
+          <div class="question-chip">Diagnostic</div>
+          <h2 class="question-title">What subject do you teach?</h2>
+          <div class="options-stack" id="q3-options">
+            <button class="option-btn" onclick="selectOption('q3', 0, 'screen-q4')">Maths</button>
+            <button class="option-btn" onclick="selectOption('q3', 1, 'screen-q4')">English</button>
+            <button class="option-btn" onclick="selectOption('q3', 2, 'screen-q4')">Science</button>
+            <button class="option-btn" onclick="selectOption('q3', 3, 'screen-q4')">Geography</button>
+            <button class="option-btn" onclick="selectOption('q3', 4, 'screen-q4')">History</button>
+            <button class="option-btn" onclick="selectOption('q3', 5, 'screen-q4')">Religious Studies</button>
+            <button class="option-btn" onclick="selectOption('q3', 6, 'screen-q4')">Other</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCREEN 5: Question 4 -->
+      <div class="screen" id="screen-q4">
+        <div class="container">
+          <div class="progress-wrap">
+            <div class="progress-labels"><span>Question 4 of 5</span><span>60%</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:75%"></div></div>
+          </div>
+          <div class="question-chip">Diagnostic</div>
+          <h2 class="question-title">You ask an AI chatbot to explain a historical event. The AI produces a clear and confident explanation. What is the most likely reason the AI produced that response?</h2>
+          <div class="options-stack" id="q4-options">
+<button class="option-btn" onclick="selectOption('q4', 0, 'screen-q5')">The AI searched the internet and found the correct information</button>
+<button class="option-btn" onclick="selectOption('q4', 1, 'screen-q5')">The AI understands the topic and explains it like a teacher would</button>
+<button class="option-btn" onclick="selectOption('q4', 2, 'screen-q5')">The AI generated the response by predicting likely words based on patterns in its training data</button>
+<button class="option-btn" onclick="selectOption('q4', 3, 'screen-q5')">The AI retrieved the answer from a database of stored facts</button>
+<button class="option-btn" onclick="selectOption('q4', 4, 'screen-q5')">I'm not sure</button>
+          </div>
+        </div>
+      </div>
+
+<!-- SCREEN 5: Question 5 -->
+<div class="screen" id="screen-q5">
+  <div class="container">
+    <div class="progress-wrap">
+      <div class="progress-labels"><span>Question 5 of 5</span><span>80%</span></div>
+      <div class="progress-track"><div class="progress-fill" style="width:80%"></div></div>
+    </div>
+    <div class="question-chip">Diagnostic</div>
+    <h2 class="question-title">Which best describes your current use of AI in teaching?</h2>
+    <div class="options-stack" id="q5-options">
+      <button class="option-btn" onclick="selectOption('q5', 0, 'screen-modules')">I do not use AI and have no plans to</button>
+      <button class="option-btn" onclick="selectOption('q5', 1, 'screen-modules')">I am aware of AI but rarely use it</button>
+      <button class="option-btn" onclick="selectOption('q5', 2, 'screen-modules')">I occasionally use AI for simple tasks (e.g. ideas, worksheets)</button>
+      <button class="option-btn" onclick="selectOption('q5', 3, 'screen-modules')">I regularly use AI to support planning and teaching</button>
+      <button class="option-btn" onclick="selectOption('q5', 4, 'screen-modules')">I actively integrate AI into my teaching and experiment with new uses</button>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: Lesson 1.4 Pre-Quiz -->
+<div class="screen" id="screen-lesson4-quiz">
+  <div class="container">
+    <div class="back-link" onclick="goBackToPath()">← Back to Lessons</div>
+    <h1 class="question-title">Lesson 1.4 - Knowledge Check</h1>
+    <p class="question-sub">Answer all 6 statements below. We will tailor your content for this lesson based on your current awareness and understanding or skip the lesson.</p>
+
+    <div id="quiz-questions"></div>
+
+<p id="quiz-feedback" style="font-size: 14px; min-height: 20px; margin-top: 16px;"></p>
+  </div>
+</div>
+        
+      <!-- SCREEN 6: Modules Overview -->
+      <div class="screen" id="screen-modules">
+        <div class="container">
+          <div class="question-chip">Your Course</div>
+          <h2 class="question-title">Your Learning Modules</h2>
+          <p class="question-sub">Complete each module in order to unlock the next. Start with Module 1 below.</p>
+          <div class="modules-overview" id="modules-overview"></div>
+        </div>
+      </div>
+
+      <!-- SCREEN 7: Learning Path -->
+      <div class="screen" id="screen-path">
+        <div class="container">
+          <div class="back-link" onclick="showScreen('screen-modules')">← Back to Modules</div>
+          <div class="question-chip">Module 1</div>
+          <h2 class="question-title">Module 1 — Lessons</h2>
+          <p class="question-sub">Complete each lesson in order to unlock the next.</p>
+          <div class="lessons-list" id="lessons-list"></div>
+          <button class="primary-btn" id="begin-btn" onclick="startNextLesson()">Begin Module 1 →</button>
+        </div>
+      </div>
+
+      <!-- SCREEN 8: Lesson -->
+      <div class="screen" id="screen-lesson">
+        <div class="container">
+          <div class="back-link" onclick="goBackToPath()">← Back to Lessons</div>
+          <div class="progress-wrap">
+            <div class="progress-labels">
+              <span id="lesson-label">Lesson 1 of 8</span>
+              <span id="lesson-pct">0%</span>
+            </div>
+            <div class="progress-track"><div class="progress-fill" id="lesson-progress"></div></div>
+          </div>
+          <div class="question-chip" id="lesson-chip">Module 1</div>
+          <div id="lesson-content"></div>
+          <div class="nav-btns">
+            <button class="primary-btn" id="btn-complete" onclick="completeLesson()">Complete Lesson ✓</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SCREEN 9: Complete -->
+      <div class="screen" id="screen-complete">
+        <div class="container center">
+          <div class="complete-icon">🎉</div>
+          <h2 class="question-title">Module 1 Complete!</h2>
+          <p class="question-sub">Well done — you've finished Module 1. Head back to your modules to continue.</p>
+          <button class="primary-btn" onclick="showScreen('screen-modules')">Back to Modules</button>
+        </div>
+      </div>
+
+<!-- SCREEN: Community -->
+<div class="screen" id="screen-community">
+  <div class="container">
+    <h1 class="question-title">Community Chat</h2>
+    <p class="question-sub">A shared space where teachers can support each other, share experiences, and receive additional support from the Compana team. We also value any teacher feedback to ensure our user experience is as best as possible and hits all teacher wants and needs.</p>
+
+    <div class="community-threads">
+
+      <div class="thread-card">
+        <div class="thread-header">
+          <div class="thread-avatar">SR</div>
+          <div class="thread-meta">
+            <div class="thread-name">Sarah R. &nbsp;<span class="thread-school">St. Cuthbert's Secondary</span></div>
+            <div class="thread-time">2 hours ago</div>
+          </div>
+          <span class="thread-tag">Question</span>
+        </div>
+        <div class="thread-body">
+          My Year 10s keep using ChatGPT to write their essays entirely. I want to set boundaries without banning AI completely — has anyone found a good approach?
+        </div>
+        <div class="thread-replies">
+          <div class="reply-card reply-compana">
+            <div class="reply-author">
+              <div class="reply-avatar compana-avatar">C</div>
+              <div>
+                <div class="reply-name">Compana Team</div>
+                <div class="reply-time">1 hour ago</div>
+              </div>
+            </div>
+            <div class="reply-body">Great question — this is one of the most common challenges teachers face right now. A useful approach is to shift assignments toward tasks AI struggles with: personal reflection, in-class drafting, or multi-stage submissions where students annotate their process. Module 4 (Academic Integrity) covers this in depth when you're ready!</div>
+          </div>
+          <div class="reply-card">
+            <div class="reply-author">
+              <div class="reply-avatar">MH</div>
+              <div>
+                <div class="reply-name">Marcus H. &nbsp;<span class="thread-school">Ashford Academy</span></div>
+                <div class="reply-time">45 mins ago</div>
+              </div>
+            </div>
+            <div class="reply-body">I started asking students to submit a short voice note explaining their essay plan before writing it. It's been a really effective way to check genuine understanding.</div>
+          </div>
+        </div>
+        <div class="thread-footer">
+          <span class="thread-stat">💬 2 replies</span>
+          <span class="thread-stat">👍 14 helpful</span>
+        </div>
+      </div>
+
+      <div class="thread-card">
+        <div class="thread-header">
+          <div class="thread-avatar">PT</div>
+          <div class="thread-meta">
+            <div class="thread-name">Priya T. &nbsp;<span class="thread-school">Westfields Primary</span></div>
+            <div class="thread-time">Yesterday</div>
+          </div>
+          <span class="thread-tag">Discussion</span>
+        </div>
+        <div class="thread-body">
+          Has anyone used AI tools for lesson planning at primary level? I'm not sure which tools are actually designed with younger pupils in mind.
+        </div>
+        <div class="thread-replies">
+          <div class="reply-card reply-compana">
+            <div class="reply-author">
+              <div class="reply-avatar compana-avatar">C</div>
+              <div>
+                <div class="reply-name">Compana Team</div>
+                <div class="reply-time">Yesterday</div>
+              </div>
+            </div>
+            <div class="reply-body">Oak National Academy's AI lesson assistant (Aila) is a great starting point — it's curriculum-aligned, free, and built specifically for UK classrooms. We cover it in Lesson 1.3. For primary specifically, the key is always keeping teacher review central to any AI-generated content.</div>
+          </div>
+        </div>
+        <div class="thread-footer">
+          <span class="thread-stat">💬 1 reply</span>
+          <span class="thread-stat">👍 9 helpful</span>
+        </div>
+      </div>
+
+      <div class="thread-card">
+        <div class="thread-header">
+          <div class="thread-avatar">JO</div>
+          <div class="thread-meta">
+            <div class="thread-name">James O. &nbsp;<span class="thread-school">Northgate Sixth Form</span></div>
+            <div class="thread-time">2 days ago</div>
+          </div>
+          <span class="thread-tag">Tip</span>
+        </div>
+        <div class="thread-body">
+          Tip for History teachers — I've been using AI to generate multiple perspectives on historical events as discussion starters. Students then have to fact-check and challenge the AI output. They love it and it builds real critical thinking skills.
+        </div>
+        <div class="thread-replies">
+          <div class="reply-card reply-compana">
+            <div class="reply-author">
+              <div class="reply-avatar compana-avatar">C</div>
+              <div>
+                <div class="reply-name">Compana Team</div>
+                <div class="reply-time">2 days ago</div>
+              </div>
+            </div>
+            <div class="reply-body">This is a brilliant approach James — using AI as a starting point for critical analysis rather than an end product. This is exactly the kind of practice we advocate in Module 5. Would you be happy for us to feature this as a case study?</div>
+          </div>
+        </div>
+        <div class="thread-footer">
+          <span class="thread-stat">💬 1 reply</span>
+          <span class="thread-stat">👍 31 helpful</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="community-cta">
+      <span>🔒 Community posting coming soon — currently view only in this prototype</span>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: Resources -->
+<div class="screen" id="screen-resources">
+  <div class="container">
+    <h1 class="question-title">Resources</h1>
+    <p class="question-sub">A curated set of trusted AI tools for UK teachers. Every tool listed here has been reviewed against UK government guidance on AI in education and is suitable for use within your school's AI policy.</p>
+
+ <div class="resources-compliance-banner">
+      <div class="resources-compliance-icon">✔</div>
+      <div>
+        <div class="resources-compliance-title">Policy Compliant Tools Only</div>
+        <div class="resources-compliance-sub">All tools listed below align with the Department for Education's guidance on generative AI in education and support responsible, teacher-led use in the classroom. Always check your individual school's policy before use.</div>
+      </div>
+    </div>
+
+    <div class="resources-section-title">General AI Assistants</div>
+    <p class="resources-section-desc">Powerful general-purpose AI tools that teachers use for planning, resource creation, drafting communications, and more. These are not built exclusively for education but are widely used and trusted across the profession.</p>
+
+    <div class="resource-card">
+      <div class="resource-card-header">
+        <div class="resource-logo-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT" class="resource-logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="resource-card-title-block">
+          <div class="resource-name">ChatGPT</div>
+          <div class="resource-maker">OpenAI</div>
+        </div>
+        <div class="resource-badges">
+          <span class="resource-badge badge-compliant">✔ Policy Compliant</span>
+          <span class="resource-badge badge-school">Check with school</span>
+        </div>
+      </div>
+      <div class="resource-desc">
+        The most widely used AI assistant in education. ChatGPT can help teachers draft lesson plans, generate quiz questions, explain concepts at different levels, summarise documents, and write feedback templates. It requires careful review of outputs before use — AI can produce plausible but inaccurate content.
+      </div>
+      <div class="resource-use-row">
+        <div class="resource-use-block">
+          <div class="resource-use-label">Best used for</div>
+          <ul class="resource-use-list">
+            <li>Drafting lesson plans and schemes of work</li>
+            <li>Generating differentiated explanations</li>
+            <li>Creating quiz or revision questions</li>
+            <li>Writing parent and admin communications</li>
+          </ul>
+        </div>
+        <div class="resource-use-block">
+          <div class="resource-use-label">Things to be aware of</div>
+          <ul class="resource-use-list">
+            <li>Always verify facts and subject accuracy</li>
+            <li>Do not input personal student data</li>
+            <li>Free tier available; advanced features require subscription</li>
+          </ul>
+        </div>
+      </div>
+      <div class="resource-footer">
+        <a href="https://chat.openai.com" target="_blank" class="resource-link-btn">Visit ChatGPT →</a>
+      </div>
+    </div>
+
+    <div class="resource-card">
+      <div class="resource-card-header">
+        <div class="resource-logo-wrap">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg" alt="Gemini" class="resource-logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="resource-card-title-block">
+          <div class="resource-name">Google Gemini</div>
+          <div class="resource-maker">Google</div>
+        </div>
+        <div class="resource-badges">
+          <span class="resource-badge badge-compliant">✔ Policy Compliant</span>
+          <span class="resource-badge badge-school">Check with school</span>
+        </div>
+      </div>
+      <div class="resource-desc">
+        Google's AI assistant integrates directly with Google Workspace tools — Docs, Gmail, Slides, and Drive — making it especially useful for schools already using Google Classroom. Gemini can help generate content, summarise documents, and assist with planning without leaving the tools teachers already use daily.
+      </div>
+      <div class="resource-use-row">
+        <div class="resource-use-block">
+          <div class="resource-use-label">Best used for</div>
+          <ul class="resource-use-list">
+            <li>Drafting and editing within Google Docs</li>
+            <li>Summarising long documents or reports</li>
+            <li>Generating slide content in Google Slides</li>
+            <li>Research support integrated with Google Search</li>
+          </ul>
+        </div>
+        <div class="resource-use-block">
+          <div class="resource-use-label">Things to be aware of</div>
+          <ul class="resource-use-list">
+            <li>Best suited to schools already using Google Workspace</li>
+            <li>Review any AI-generated content before sharing with students</li>
+            <li>Data handling settings vary by school Google account configuration</li>
+          </ul>
+        </div>
+      </div>
+      <div class="resource-footer">
+        <a href="https://gemini.google.com" target="_blank" class="resource-link-btn">Visit Gemini →</a>
+      </div>
+    </div>
+
+    <div class="resources-section-title" style="margin-top: 36px;">Education-Specific AI Tools</div>
+    <p class="resources-section-desc">These tools are built specifically for UK schools — curriculum-aligned, designed with safeguarding in mind, and trusted across thousands of classrooms. They are the recommended starting point for teachers new to AI in education.</p>
+
+    <div class="resource-card resource-card-featured">
+      <div class="resource-card-header">
+        <div class="resource-logo-wrap">
+          <img src="https://www.thenational.academy/favicon.ico" alt="Oak" class="resource-logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="resource-card-title-block">
+          <div class="resource-name">Oak National Academy — Aila</div>
+          <div class="resource-maker">Oak National Academy</div>
+        </div>
+        <div class="resource-badges">
+          <span class="resource-badge badge-compliant">✔ Policy Compliant</span>
+          <span class="resource-badge badge-recommended">★ Recommended</span>
+          <span class="resource-badge badge-free">Free</span>
+        </div>
+      </div>
+      <div class="resource-desc">
+        Aila is Oak National Academy's AI lesson assistant — a free tool designed specifically for UK teachers. It generates structured, curriculum-aligned lesson plans and resources based on your subject, year group, and learning objectives. As a government-supported organisation, Oak is one of the most trusted sources of AI-assisted teaching materials in England.
+      </div>
+      <div class="resource-use-row">
+        <div class="resource-use-block">
+          <div class="resource-use-label">Best used for</div>
+          <ul class="resource-use-list">
+            <li>Generating full lesson plans quickly</li>
+            <li>Creating curriculum-aligned activities and resources</li>
+            <li>Reducing lesson planning workload</li>
+            <li>Adapting content to different year groups</li>
+          </ul>
+        </div>
+        <div class="resource-use-block">
+          <div class="resource-use-label">Why it's trusted</div>
+          <ul class="resource-use-list">
+            <li>Backed by a UK government-supported organisation</li>
+            <li>Designed with teacher oversight built in</li>
+            <li>Outputs aligned to national curriculum standards</li>
+            <li>Free for all UK teachers</li>
+          </ul>
+        </div>
+      </div>
+      <div class="resource-footer">
+        <a href="https://www.thenational.academy/ai-lesson-assistant" target="_blank" class="resource-link-btn">Visit Oak National Academy →</a>
+      </div>
+    </div>
+
+    <div class="resource-card resource-card-featured">
+      <div class="resource-card-header">
+        <div class="resource-logo-wrap">
+          <img src="https://www.sparxmaths.com/favicon.ico" alt="Sparx" class="resource-logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="resource-card-title-block">
+          <div class="resource-name">Sparx Learning</div>
+          <div class="resource-maker">Sparx</div>
+        </div>
+        <div class="resource-badges">
+          <span class="resource-badge badge-compliant">✔ Policy Compliant</span>
+          <span class="resource-badge badge-recommended">★ Recommended</span>
+          <span class="resource-badge badge-school-provided">Often school-provided</span>
+        </div>
+      </div>
+      <div class="resource-desc">
+        Sparx uses AI to set personalised maths and reading homework that adapts to each student's level. It provides immediate feedback to students and detailed progress data to teachers — making it one of the most widely adopted AI-powered learning tools in UK secondary schools. Many schools subscribe at an institutional level.
+      </div>
+      <div class="resource-use-row">
+        <div class="resource-use-block">
+          <div class="resource-use-label">Best used for</div>
+          <ul class="resource-use-list">
+            <li>Setting structured, personalised weekly homework</li>
+            <li>Reinforcing classroom learning through practice</li>
+            <li>Tracking student engagement and completion</li>
+            <li>Identifying students who are struggling</li>
+          </ul>
+        </div>
+        <div class="resource-use-block">
+          <div class="resource-use-label">Why it's trusted</div>
+          <ul class="resource-use-list">
+            <li>Widely adopted across UK secondary schools</li>
+            <li>Built for classroom use with teacher oversight</li>
+            <li>Student data kept secure within school systems</li>
+            <li>Evidence-based approach to homework and practice</li>
+          </ul>
+        </div>
+      </div>
+      <div class="resource-footer">
+        <a href="https://www.sparxmaths.com" target="_blank" class="resource-link-btn">Visit Sparx Learning →</a>
+      </div>
+    </div>
+
+    <div class="resource-card resource-card-featured">
+      <div class="resource-card-header">
+        <div class="resource-logo-wrap">
+          <img src="https://www.tassomai.com/favicon.ico" alt="Tassomai" class="resource-logo" onerror="this.style.display='none'" />
+        </div>
+        <div class="resource-card-title-block">
+          <div class="resource-name">Tassomai</div>
+          <div class="resource-maker">Tassomai</div>
+        </div>
+        <div class="resource-badges">
+          <span class="resource-badge badge-compliant">✔ Policy Compliant</span>
+          <span class="resource-badge badge-recommended">★ Recommended</span>
+          <span class="resource-badge badge-school-provided">Often school-provided</span>
+        </div>
+      </div>
+      <div class="resource-desc">
+        Tassomai is a UK-built AI revision platform that personalises practice using spaced repetition — a learning science technique proven to improve long-term retention. It identifies gaps in student knowledge and adapts question frequency accordingly. Widely used for GCSE preparation across Science, English, and other core subjects.
+      </div>
+      <div class="resource-use-row">
+        <div class="resource-use-block">
+          <div class="resource-use-label">Best used for</div>
+          <ul class="resource-use-list">
+            <li>Supporting GCSE revision across multiple subjects</li>
+            <li>Setting regular retrieval practice as homework</li>
+            <li>Identifying knowledge gaps before assessments</li>
+            <li>Improving long-term retention through spaced repetition</li>
+          </ul>
+        </div>
+        <div class="resource-use-block">
+          <div class="resource-use-label">Why it's trusted</div>
+          <ul class="resource-use-list">
+            <li>Built and based in the UK</li>
+            <li>Aligned to GCSE courses and specifications</li>
+            <li>Grounded in learning science research</li>
+            <li>Used across thousands of UK classrooms</li>
+          </ul>
+        </div>
+      </div>
+      <div class="resource-footer">
+        <a href="https://www.tassomai.com" target="_blank" class="resource-link-btn">Visit Tassomai →</a>
+      </div>
+    </div>
+
+    <div class="resources-gov-banner">
+      <div class="resources-gov-title">📋 UK Government Guidance on AI in Education</div>
+      <div class="resources-gov-body">The Department for Education has published guidance on the use of generative AI in education. All tools featured on this page have been selected with this guidance in mind — prioritising teacher oversight, data safety, and responsible use.</div>
+      <a href="https://www.gov.uk/government/publications/generative-artificial-intelligence-in-education" target="_blank" class="resource-link-btn" style="display:inline-block; margin-top: 14px;">Read the DfE Guidance →</a>
+    </div>
+
+  </div>
+</div>
+        
+<!-- SCREEN: Manager Dashboard -->
+<div class="screen" id="screen-manager">
+  <div class="container">
+    <h1 class="question-title">Manager Dashboard</h2>
+    <p class="question-sub">Track your staff's progress through our microcourse across all modules and lessons.</p>
+
+    <div class="dash-stats">
+      <div class="dash-stat-card">
+        <div class="dash-stat-label">Active Teachers</div>
+        <div class="dash-stat-value">24</div>
+        <div class="dash-stat-sub">of 31 enrolled</div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-label">Avg. Time per Lesson</div>
+        <div class="dash-stat-value">8.4<span class="dash-stat-unit">min</span></div>
+        <div class="dash-stat-sub">across all lessons</div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-label">Module 1 Completions</div>
+        <div class="dash-stat-value">17</div>
+        <div class="dash-stat-sub">teachers fully complete</div>
+      </div>
+      <div class="dash-stat-card">
+        <div class="dash-stat-label">Avg. Lessons Done</div>
+        <div class="dash-stat-value">3.2</div>
+        <div class="dash-stat-sub">per active teacher</div>
+      </div>
+    </div>
+
+    <div class="dash-section-title">Lesson Engagement Breakdown</div>
+    <div class="dash-lesson-table">
+      <div class="dash-lesson-row dash-lesson-header">
+        <div>Lesson</div>
+        <div>Completions</div>
+        <div>Avg. Time</div>
+        <div>Status</div>
+      </div>
+      <div class="dash-lesson-row">
+        <div>1.1 — What is Artificial Intelligence?</div>
+        <div>24 / 31</div>
+        <div>6.2 min</div>
+        <div><span class="dash-badge dash-badge-green">Strong</span></div>
+      </div>
+      <div class="dash-lesson-row">
+        <div>1.2 — How AI Works</div>
+        <div>21 / 31</div>
+        <div>9.1 min</div>
+        <div><span class="dash-badge dash-badge-green">Strong</span></div>
+      </div>
+      <div class="dash-lesson-row">
+        <div>1.3 — Types of AI Tools</div>
+        <div>19 / 31</div>
+        <div>8.7 min</div>
+        <div><span class="dash-badge dash-badge-amber">Good</span></div>
+      </div>
+      <div class="dash-lesson-row">
+        <div>1.4 — Common Misconceptions</div>
+        <div>17 / 31</div>
+        <div>10.3 min</div>
+        <div><span class="dash-badge dash-badge-amber">Good</span></div>
+      </div>
+      <div class="dash-lesson-row">
+        <div>1.5 — AI in Your Subject</div>
+        <div>17 / 31</div>
+        <div>11.8 min</div>
+        <div><span class="dash-badge dash-badge-green">Strong</span></div>
+      </div>
+    </div>
+
+    <div class="dash-section-title" style="margin-top: 28px;">Teachers Needing a Nudge</div>
+    <p style="font-size: 14px; color: var(--muted); margin-bottom: 16px;">These teachers haven't logged in for 7+ days. Send them a friendly reminder to continue their learning.</p>
+
+    <div class="dash-teacher-list">
+      <div class="dash-teacher-row">
+        <div class="dash-teacher-avatar">KL</div>
+        <div class="dash-teacher-info">
+          <div class="dash-teacher-name">Karen L.</div>
+          <div class="dash-teacher-meta">Last active 9 days ago &nbsp;·&nbsp; Lesson 1.2 in progress</div>
+        </div>
+        <span class="dash-last-seen">9 days ago</span>
+      </div>
+      <div class="dash-teacher-row">
+        <div class="dash-teacher-avatar">BM</div>
+        <div class="dash-teacher-info">
+          <div class="dash-teacher-name">Ben M.</div>
+          <div class="dash-teacher-meta">Last active 12 days ago &nbsp;·&nbsp; Not yet started</div>
+        </div>
+        <span class="dash-last-seen">12 days ago</span>
+      </div>
+      <div class="dash-teacher-row">
+        <div class="dash-teacher-avatar">FN</div>
+        <div class="dash-teacher-info">
+          <div class="dash-teacher-name">Fatima N.</div>
+          <div class="dash-teacher-meta">Last active 8 days ago &nbsp;·&nbsp; Lesson 1.3 in progress</div>
+        </div>
+        <span class="dash-last-seen">8 days ago</span>
+      </div>
+    </div>
+
+    <div class="nav-btns" style="justify-content: flex-start; margin-top: 24px;">
+      <button class="primary-btn" onclick="alert('📧 Reminder emails sent to 3 teachers! (Prototype only)')">📧 Send Reminder Emails</button>
+    </div>
+
+    <div class="community-cta" style="margin-top: 24px;">
+      <span>🔒 Full manager controls coming in the full release — this is a prototype view</span>
+    </div>
+  </div>
+</div>
+        
+    </div><!-- end main-content -->
+  </div><!-- end layout -->
+
+  <script src="script.js"></script>
+<script>
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const icon = document.getElementById('toggle-icon');
+    sidebar.classList.toggle('collapsed');
+    icon.textContent = sidebar.classList.contains('collapsed') ? '☰' : '✕';
+  }
+
+  function activateSidebarItem(index) {
+    document.querySelectorAll('.sidebar-item').forEach((el, i) => {
+      el.classList.toggle('active', i === index);
+    });
+  }
+</script>
+</body>
+</html>
