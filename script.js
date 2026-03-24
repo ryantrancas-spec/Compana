@@ -927,28 +927,13 @@ Format as clean HTML using ONLY these existing CSS classes: lesson-section, h3, 
 Do not include any explanation outside the HTML. Do not use markdown. Do not include backticks or code fences. Start directly with a <section> tag and end with </section>.`;
 
   try {
-    
+    const GEMINI_API_KEY = "AIzaSyD0TjhmKdnE9tPP7np35gwGqHQ-Hd3yf8M";
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          contents: [
-            {
-              parts: [{ text: prompt }]
-            }
-          ],
-          generationConfig: {
-            temperature: 0.7,
-            maxOutputTokens: 3000
-          }
-        })
-      }
-    );
+    const response = await fetch('/.netlify/functions/generate-lesson', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ prompt: prompt })
+});
 
     const data = await response.json();
 
