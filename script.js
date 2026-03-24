@@ -927,7 +927,7 @@ Format as clean HTML using ONLY these existing CSS classes: lesson-section, h3, 
 Do not include any explanation outside the HTML. Do not use markdown. Do not include backticks or code fences. Start directly with a <section> tag and end with </section>.`;
 
   try {
-    const GEMINI_API_KEY = "AIzaSyD0TjhmKdnE9tPP7np35gwGqHQ-Hd3yf8M";
+    
 
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
