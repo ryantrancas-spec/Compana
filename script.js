@@ -6,7 +6,7 @@ let answerQ4 = null;
 let answerQ5 = null;
 
 function getSubjectName() {
-  const subjects = ["Maths", "English", "Science", "Geography", "History", "Religious Studies", "Other"];
+  const subjects = ["Maths", "English", "Science", "Geography", "History", "Religious Studies", "Business Studies", "Spanish", "French", "Computer Science", "Art"];
   return subjects[answerQ3] || "Your Subject";
 }
 
@@ -50,7 +50,7 @@ const lessons = [
 
       <p>Artificial Intelligence (AI) refers to computer systems designed to perform tasks that normally require human intelligence. These tasks can include understanding language, recognising patterns, analysing data, solving problems, and generating content.</p>
       <p>AI systems work by learning from large amounts of data and identifying patterns within that data to produce responses or predictions. We will dive further into this concept in the next lesson.</p>
-      <p>AI is developing rapidly and is increasingly influencing many industries, including education. Artificial intelligence has the potential to support teachers by improving workload efficiency, assisting with the creation of learning materials, and enabling more personalised learning experiences for students. However, AI systems are not without limitations and may produce inaccurate, biased, or incomplete outputs if used without careful oversight.</p>
+      <p>AI is developing rapidly and is increasingly influencing many industries, including education. Artificial Intelligence has the potential to support teachers by improving workload efficiency, assisting with the creation of learning materials, and enabling more personalised learning experiences for students. However, AI systems are not without limitations and may produce inaccurate, biased, or incomplete outputs if used without careful oversight.</p>
 
     <p>Developing a clear understanding of how AI works and how it can be used responsibly enables teachers to use these tools more effectively, make informed decisions about their use, and support students in developing safe and appropriate AI literacy.</p>
     </section>
@@ -514,6 +514,19 @@ function showScreen(id) {
   window.scrollTo(0, 0);
 
   if (id === 'screen-modules') buildModulesOverview();
+
+  if (id === 'screen-home') {
+    const btn = document.getElementById('home-start-btn');
+    if (btn) {
+      if (lessonState.length > 0) {
+        btn.textContent = 'Resume Learning →';
+      } else if (answerQ1 !== null) {
+        btn.textContent = 'Continue Setup →';
+      } else {
+        btn.textContent = 'Start Your Learning Path →';
+      }
+    }
+  }
 }
 
 // ── Select a multiple choice answer ──
@@ -561,12 +574,13 @@ function buildLessonState() {
     skipped: false
   }));
   if (answerQ4 === 2) {
-    lessonState[1].skipped = true;
+    lessonState[3].skipped = true;
   }
   if (answerQ5 === 3 || answerQ5 === 4) {
     lessonState[0].skipped = true;
   }
   lessons[4].title = "1.5 - How AI applies to " + getSubjectName();
+  generatePersonalisedLesson();
 }
 
 // ── Check if a lesson is unlocked ──
@@ -769,8 +783,17 @@ function renderLesson() {
   document.getElementById('lesson-progress').style.width = `${pct}%`;
 document.getElementById('lesson-chip').textContent = 'Module 1';
 
+document.getElementById('btn-complete').style.display = 'inline-block';
+
 if (currentLessonIndex === 4 && !lessons[4].generated) {
-  generatePersonalisedLesson();
+  document.getElementById('lesson-content').innerHTML = `
+    <h2>${lessons[4].title}</h2>
+    <div class="generating-box">
+      <div class="generating-spinner"></div>
+      <p>Personalising this lesson for ${getSubjectName()} teachers...</p>
+    </div>
+  `;
+  document.getElementById('btn-complete').style.display = 'none';
   return;
 }
 
@@ -892,9 +915,6 @@ Write a paragraph explaining why AI is particularly relevant to ${subject} teach
 Ways AI Can Help
 Write 3 specific and detailed ways AI tools can help a ${subject} teacher. For each one include a title, a 2-3 sentence explanation, and a not too long concrete example, which is specific to the subject area and school type. Use the principles-grid, principle-card, principle-icon, principle-title, principle-body CSS classes for this section.
 
-Classroom Scenario
-Write a realistic scenario (at least 70 words) showing AI being used in a ${subject} lesson from the teacher's perspective. Use the example-box and example-label CSS classes.
-
 Cautions for ${subject} Teachers
 Write 2 specific cautions a ${subject} teacher should be aware of when using AI, each with a title and explanation. Do not include generic cautions, only ones that specifically affect this subject. Use the info-card and info-card-title CSS classes.
 
@@ -902,12 +922,12 @@ Key Takeaway
 Write a 2-3 sentence summary specifically for ${subject} teachers. Use the info-box CSS class.
 
 
-Format as clean HTML using ONLY these existing CSS classes: lesson-section, h3, info-card, info-card-title, lesson-list, example-box, example-label, info-box, two-col, principles-grid, principle-card, principle-icon, principle-title, principle-body.
+Format as clean HTML using ONLY these existing CSS classes: lesson-section, h3, info-card, info-card-title, lesson-list, example-box, example-label, info-box, two-col, principles-grid, principle-card, principle-icon, principle-title, principle-body. Format the examples to ways AI can help in a different way to the text about the way AI can help so there is a clear difference. You must include everything I ask you to do.
 
 Do not include any explanation outside the HTML. Do not use markdown. Do not include backticks or code fences. Start directly with a <section> tag and end with </section>.`;
 
   try {
-    const GEMINI_API_KEY = "AIzaSyB0UHKOB3Qaavhf7w1GnwYYvPCsLjir4uU";
+    const GEMINI_API_KEY = "AIzaSyD0TjhmKdnE9tPP7np35gwGqHQ-Hd3yf8M";
 
     const response = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
@@ -944,12 +964,12 @@ const generatedHTML = data.candidates[0].content.parts[0].text;
 
     // Cache it so it doesn't regenerate on revisit
     lessons[4].body = cleanHTML;
-    lessons[4].generated = true;
-    lessons[4].rawHTML = true;
-
-    // Re-render with new content
-    renderLesson();
-    document.getElementById('btn-complete').style.display = 'inline-block';
+lessons[4].generated = true;
+lessons[4].rawHTML = true;
+if (currentLessonIndex === 4) {
+  renderLesson();
+  document.getElementById('btn-complete').style.display = 'inline-block';
+}
 
   } catch (error) {
     console.error('Gemini API error:', error);
@@ -959,4 +979,26 @@ const generatedHTML = data.candidates[0].content.parts[0].text;
     `;
     document.getElementById('btn-complete').style.display = 'inline-block';
   }
+}
+
+function goToElearning() {
+  activateSidebarItem(1);
+  if (lessonState.length > 0) {
+    buildModulesOverview();
+    showScreen('screen-modules');
+  } else if (answerQ4 !== null) {
+    showScreen('screen-q5');
+  } else if (answerQ3 !== null) {
+    showScreen('screen-q4');
+  } else if (answerQ2 !== null) {
+    showScreen('screen-q3');
+  } else if (answerQ1 !== null) {
+    showScreen('screen-q2');
+  } else {
+    showScreen('screen-q1');
+  }
+}
+
+function startOrResumeLearning() {
+  goToElearning();
 }

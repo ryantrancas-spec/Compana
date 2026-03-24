@@ -29,7 +29,7 @@
       <span class="sidebar-icon">🏠</span>
       <span class="sidebar-label">Home</span>
     </div>
-    <div class="sidebar-item" title="E-Learning" onclick="activateSidebarItem(1); showScreen('screen-modules')">
+    <div class="sidebar-item" title="E-Learning" onclick="goToElearning()">
       <span class="sidebar-icon">🎓</span>
       <span class="sidebar-label">E-Learning</span>
     </div>
@@ -59,9 +59,9 @@
         <div class="home-elearning-top">
           <div class="welcome-badge" style="margin-bottom: 16px;">Education For Educators</div>
           <h1 class="welcome-title" style="text-align:left; font-size:34px;">Welcome to Compana</h1>
-          <p style="font-size:15px; color:var(--muted); line-height:1.75; margin: 12px 0 24px;">Your personalised AI literacy programme — built for UK teachers. Work through bite-sized lessons at your own pace and feel confident using and guiding AI in your classroom.</p>
-          <button class="primary-btn" <button class="primary-btn" onclick="activateSidebarItem(1); showScreen('screen-q1')">Start Your Learning Path →</button>
-          <p class="trust-note" style="text-align:left; margin-top:16px;">✦ Free to use &nbsp;·&nbsp; ✦ No sign-up needed &nbsp;·&nbsp; ✦ Takes ~5 minutes to set up</p>
+          <p style="font-size:15px; color:var(--muted); line-height:1.75; margin: 12px 0 24px;">A personalised AI literacy programme for UK teachers. Using a diagnostic to assess your understanding, Compana delivers tailored, bite-sized lessons so you can confidently use and guide AI in the classroom.</p>
+          <button class="primary-btn" id="home-start-btn" onclick="startOrResumeLearning()">Start Your Learning Path →</button>
+          <p class="trust-note" style="text-align:left; margin-top:16px;">✦ No data stored &nbsp;·&nbsp; ✦ No sign-up needed &nbsp;·&nbsp; ✦ Skips content you already know</p>
         </div>
         <div class="home-modules-preview">
           <div class="home-modules-label">Your Modules</div>
@@ -108,7 +108,7 @@
     <div class="home-sidebar-col">
 
       <!-- Community preview -->
-      <div class="home-widget" onclick="activateSidebarItem(1); showScreen('screen-community')" style="cursor:pointer;">
+      <div class="home-widget" onclick="activateSidebarItem(2); showScreen('screen-community')" style="cursor:pointer;">
         <div class="home-widget-header">
           <span class="home-widget-icon">👥</span>
           <span class="home-widget-title">Community</span>
@@ -132,7 +132,7 @@
       </div>
 
       <!-- Resources preview -->
-      <div class="home-widget" onclick="activateSidebarItem(2); showScreen('screen-resources')" style="cursor:pointer;">
+      <div class="home-widget" onclick="activateSidebarItem(3); showScreen('screen-resources')" style="cursor:pointer;">
         <div class="home-widget-header">
           <span class="home-widget-icon">📚</span>
           <span class="home-widget-title">Resources</span>
@@ -157,7 +157,7 @@
       </div>
 
       <!-- Manager dashboard preview -->
-      <div class="home-widget" onclick="activateSidebarItem(3); showScreen('screen-manager')" style="cursor:pointer;">
+      <div class="home-widget" onclick="activateSidebarItem(4); showScreen('screen-manager')" style="cursor:pointer;">
         <div class="home-widget-header">
           <span class="home-widget-icon">📊</span>
           <span class="home-widget-title">Manager Dashboard</span>
@@ -180,9 +180,9 @@
         </div>
       </div>
 
-    </div>
-  </div>
-</div>
+    </div><!-- end home-sidebar-col -->
+  </div><!-- end home-layout -->
+</div><!-- end screen-home -->
 
       <!-- SCREEN 2: Question 1 -->
       <div class="screen" id="screen-q1">
@@ -191,7 +191,7 @@
             <div class="progress-labels"><span>Question 1 of 5</span><span>0%</span></div>
             <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
           </div>
-          <div class="question-chip">Diagnostic</div>
+          <div class="question-chip">A short diagnostic to help us craft your ideal learning path</div>
           <h2 class="question-title">What type of school do you teach in?</h2>
           <div class="options-stack" id="q1-options">
             <button class="option-btn" onclick="selectOption('q1', 0, 'screen-q2')">Primary School</button>
@@ -208,10 +208,10 @@
             <div class="progress-labels"><span>Question 2 of 5</span><span>20%</span></div>
             <div class="progress-track"><div class="progress-fill" style="width:25%"></div></div>
           </div>
-          <div class="question-chip">Diagnostic</div>
+          <div class="question-chip">A short diagnostic to help us craft your ideal learning path</div>
           <h2 class="question-title">How old are you?</h2>
           <p class="question-sub">Type your age below and press Continue.</p>
-          <input class="text-input" type="number" id="age-input" min="18" max="99" placeholder="e.g. 34" />
+          <input class="text-input" type="number" id="age-input" min="18" max="99" placeholder="e.g. 34" onkeydown="if(event.key==='Enter') submitAge()" />
           <p class="input-error" id="age-error"></p>
           <div class="nav-btns" style="margin-top: 24px;">
             <button class="primary-btn" onclick="submitAge()">Continue →</button>
@@ -226,7 +226,7 @@
             <div class="progress-labels"><span>Question 3 of 5</span><span>40%</span></div>
             <div class="progress-track"><div class="progress-fill" style="width:50%"></div></div>
           </div>
-          <div class="question-chip">Diagnostic</div>
+          <div class="question-chip">A short diagnostic to help us craft your ideal learning path</div>
           <h2 class="question-title">What subject do you teach?</h2>
           <div class="options-stack" id="q3-options">
             <button class="option-btn" onclick="selectOption('q3', 0, 'screen-q4')">Maths</button>
@@ -235,7 +235,11 @@
             <button class="option-btn" onclick="selectOption('q3', 3, 'screen-q4')">Geography</button>
             <button class="option-btn" onclick="selectOption('q3', 4, 'screen-q4')">History</button>
             <button class="option-btn" onclick="selectOption('q3', 5, 'screen-q4')">Religious Studies</button>
-            <button class="option-btn" onclick="selectOption('q3', 6, 'screen-q4')">Other</button>
+            <button class="option-btn" onclick="selectOption('q3', 6, 'screen-q4')">Business Studies</button>
+            <button class="option-btn" onclick="selectOption('q3', 7, 'screen-q4')">Spanish</button>
+            <button class="option-btn" onclick="selectOption('q3', 8, 'screen-q4')">French</button>
+            <button class="option-btn" onclick="selectOption('q3', 9, 'screen-q4')">Computer Science</button>
+            <button class="option-btn" onclick="selectOption('q3', 10, 'screen-q4')">Art</button>
           </div>
         </div>
       </div>
@@ -247,7 +251,7 @@
             <div class="progress-labels"><span>Question 4 of 5</span><span>60%</span></div>
             <div class="progress-track"><div class="progress-fill" style="width:75%"></div></div>
           </div>
-          <div class="question-chip">Diagnostic</div>
+          <div class="question-chip">A short diagnostic to help us craft your ideal learning path</div>
           <h2 class="question-title">You ask an AI chatbot to explain a historical event. The AI produces a clear and confident explanation. What is the most likely reason the AI produced that response?</h2>
           <div class="options-stack" id="q4-options">
 <button class="option-btn" onclick="selectOption('q4', 0, 'screen-q5')">The AI searched the internet and found the correct information</button>
@@ -266,7 +270,7 @@
       <div class="progress-labels"><span>Question 5 of 5</span><span>80%</span></div>
       <div class="progress-track"><div class="progress-fill" style="width:80%"></div></div>
     </div>
-    <div class="question-chip">Diagnostic</div>
+    <div class="question-chip">A short diagnostic to help us craft your ideal learning path</div>
     <h2 class="question-title">Which best describes your current use of AI in teaching?</h2>
     <div class="options-stack" id="q5-options">
       <button class="option-btn" onclick="selectOption('q5', 0, 'screen-modules')">I do not use AI and have no plans to</button>
