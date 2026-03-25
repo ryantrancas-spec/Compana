@@ -574,7 +574,7 @@ function buildLessonState() {
     skipped: false
   }));
   if (answerQ4 === 2) {
-    lessonState[3].skipped = true;
+    lessonState[1].skipped = true;
   }
   if (answerQ5 === 3 || answerQ5 === 4) {
     lessonState[0].skipped = true;
@@ -927,7 +927,7 @@ Format as clean HTML using ONLY these existing CSS classes: lesson-section, h3, 
 Do not include any explanation outside the HTML. Do not use markdown. Do not include backticks or code fences. Start directly with a <section> tag and end with </section>.`;
 
   try {
-   
+    
 
     const response = await fetch('/.netlify/functions/generate-lesson', {
   method: 'POST',
