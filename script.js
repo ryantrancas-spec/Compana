@@ -957,16 +957,6 @@ try {
   }
 }
 
-  } catch (error) {
-    console.error('Gemini API error:', error);
-    document.getElementById('lesson-content').innerHTML = `
-      <h2>${lessons[4].title}</h2>
-      <div class="info-box">⚠️ Unable to load personalised content right now. Please try again later.</div>
-    `;
-    document.getElementById('btn-complete').style.display = 'inline-block';
-  }
-}
-
 function goToElearning() {
   activateSidebarItem(1);
   if (lessonState.length > 0) {
