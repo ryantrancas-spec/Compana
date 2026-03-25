@@ -768,7 +768,7 @@ function selectQuizAnswer(index, value) {
         renderLesson();
         showScreen('screen-lesson');
       }
-    }, 600);
+    }, 700);
   }
 }
 
@@ -922,7 +922,7 @@ Key Takeaway
 Write a 2-3 sentence summary specifically for ${subject} teachers. Use the info-box CSS class.
 
 
-Format as clean HTML using ONLY these existing CSS classes: lesson-section, h3, info-card, info-card-title, lesson-list, example-box, example-label, info-box, two-col, principles-grid, principle-card, principle-icon, principle-title, principle-body. Format the examples to ways AI can help in a different way to the text about the way AI can help so there is a clear difference. You must include everything I ask you to do.
+Format as clean HTML using ONLY these existing CSS classes: lesson-section, h3, info-card, info-card-title, lesson-list, example-box, example-label, info-box, two-col, principles-grid, principle-card, principle-icon, principle-title, principle-body. Format the examples to ways AI can help in a different way to the text about the way AI can help so there is a clear difference, but still have them clearly integrated within the same section. You must include everything I ask you to do. Leave a bit of a space between the boxes containing the two different cautions. It should look clean and professional.
 
 Do not include any explanation outside the HTML. Do not use markdown. Do not include backticks or code fences. Start directly with a <section> tag and end with </section>.`;
 
