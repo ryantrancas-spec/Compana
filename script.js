@@ -927,33 +927,33 @@ Format as clean HTML using ONLY these existing CSS classes: lesson-section, h3, 
 Do not include any explanation outside the HTML. Do not use markdown. Do not include backticks or code fences. Start directly with a <section> tag and end with </section>.`;
 
 try {
-  const response = await fetch('https://orange-frost-909d.ryan-trancas.workers.dev', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ prompt: prompt })
-  });
-  const data = await response.json();
+    const response = await fetch('https://orange-frost-909d.ryan-trancas.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: prompt })
+    });
+    const data = await response.json();
 
-  if (!data.candidates || !data.candidates[0]) {
-    console.error('Gemini response issue:', JSON.stringify(data));
-    throw new Error('No candidates in response');
-  }
-  const generatedHTML = data.candidates[0].content.parts[0].text;
-  const cleanHTML = generatedHTML.replace(/```html|```/g, '').trim();
-  lessons[4].body = cleanHTML;
-  lessons[4].generated = true;
-  lessons[4].rawHTML = true;
-  if (currentLessonIndex === 4) {
-    renderLesson();
-    document.getElementById('btn-complete').style.display = 'inline-block';
-  }
-} catch (error) {
-  console.error('Gemini API error:', error);
-  document.getElementById('lesson-content').innerHTML = `
-    <h2>${lessons[4].title}</h2>
-    <div class="info-box">⚠️ Unable to load personalised content right now. Please try again later.</div>
+    if (!data.candidates || !data.candidates[0]) {
+      console.error('Gemini response issue:', JSON.stringify(data));
+      throw new Error('No candidates in response');
+    }
+    const generatedHTML = data.candidates[0].content.parts[0].text;
+    const cleanHTML = generatedHTML.replace(/```html|```/g, '').trim();
+    lessons[4].body = cleanHTML;
+    lessons[4].generated = true;
+    lessons[4].rawHTML = true;
+    if (currentLessonIndex === 4) {
+      renderLesson();
+      document.getElementById('btn-complete').style.display = 'inline-block';
+    }
+  } catch (error) {
+    console.error('Gemini API error:', error);
+    document.getElementById('lesson-content').innerHTML = `
+      <h2>${lessons[4].title}</h2>
+      <div class="info-box">⚠️ Unable to load personalised content right now. Please try again later.</div>
     `;
-  document.getElementById('btn-complete').style.display = 'inline-block';
+    document.getElementById('btn-complete').style.display = 'inline-block';
   }
 }
 
