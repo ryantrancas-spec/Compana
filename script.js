@@ -768,7 +768,7 @@ function selectQuizAnswer(index, value) {
         renderLesson();
         showScreen('screen-lesson');
       }
-    }, 400);
+    }, 600);
   }
 }
 
