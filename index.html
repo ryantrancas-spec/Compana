@@ -193,10 +193,14 @@
           </div>
           <div class="question-chip">A short diagnostic to help us craft your ideal learning path</div>
           <h2 class="question-title">What type of school do you teach in?</h2>
+          <h3 class="question-subtitle">Select all that apply</h3>
           <div class="options-stack" id="q1-options">
-            <button class="option-btn" onclick="selectOption('q1', 0, 'screen-q2')">Primary School</button>
-            <button class="option-btn" onclick="selectOption('q1', 1, 'screen-q2')">Secondary School</button>
-            <button class="option-btn" onclick="selectOption('q1', 2, 'screen-q2')">Sixth-Form / College</button>
+            <div class="option-btn" onclick="toggleQ1Option(this, 0)">Primary School</div>
+            <div class="option-btn" onclick="toggleQ1Option(this, 1)">Secondary School</div>
+            <div class="option-btn" onclick="toggleQ1Option(this, 2)">Sixth-Form / College</div>
+          </div>
+          <div class="nav-btns" style="margin-top: 24px;">
+            <button class="primary-btn" id="q1-continue-btn" onclick="submitQ1()" disabled>Continue →</button>
           </div>
         </div>
       </div>
@@ -206,15 +210,14 @@
         <div class="container">
           <div class="progress-wrap">
             <div class="progress-labels"><span>Question 2 of 5</span><span>20%</span></div>
-            <div class="progress-track"><div class="progress-fill" style="width:25%"></div></div>
+            <div class="progress-track"><div class="progress-fill" style="width:20%"></div></div>
           </div>
-          <div class="question-chip">A short diagnostic to help us craft your ideal learning path</div>
-          <h2 class="question-title">How old are you?</h2>
-          <p class="question-sub">Type your age below and press Continue.</p>
-          <input class="text-input" type="number" id="age-input" min="18" max="99" placeholder="e.g. 34" onkeydown="if(event.key==='Enter') submitAge()" />
-          <p class="input-error" id="age-error"></p>
+          <div class="question-chip">Diagnostic</div>
+          <h2 class="question-title">Which year groups do you teach?</h2>
+          <h3 class="question-subtitle">Select all that apply</h3>
+          <div class="options-stack" id="q2-options"></div>
           <div class="nav-btns" style="margin-top: 24px;">
-            <button class="primary-btn" onclick="submitAge()">Continue →</button>
+            <button class="primary-btn" id="q2-continue-btn" onclick="submitQ2()" disabled>Continue →</button>
           </div>
         </div>
       </div>
@@ -294,7 +297,15 @@
 <p id="quiz-feedback" style="font-size: 14px; min-height: 20px; margin-top: 16px;"></p>
   </div>
 </div>
-        
+
+<!-- SCREEN: Lesson 1.4 Quiz Results -->
+<div class="screen" id="screen-lesson4-results">
+  <div class="container">
+    <div class="question-chip">Lesson 1.4 — Knowledge Check</div>
+    <div id="quiz-results-content"></div>
+  </div>
+</div>
+      
       <!-- SCREEN 6: Modules Overview -->
       <div class="screen" id="screen-modules">
         <div class="container">
@@ -655,43 +666,26 @@
         <div class="resource-logo-wrap">
           <img src="https://www.tassomai.com/favicon.ico" alt="Tassomai" class="resource-logo" onerror="this.style.display='none'" />
         </div>
-        <div class="resource-card-title-block">
-          <div class="resource-name">Tassomai</div>
-          <div class="resource-maker">Tassomai</div>
+        <div class="edu-tool-card">
+          <div class="edu-tool-header">
+            <div class="edu-tool-logo-wrap">
+              <span class="edu-tool-emoji">🤖</span>
+            </div>
+            <div>
+              <div class="edu-tool-name" id="personalised-tool-header">Finding a tool for your subject...</div>
+              <div class="edu-tool-sub">Recommended for your subject</div>
+            </div>
+            <span class="edu-tool-tag">Personalised Pick</span>
+          </div>
+          <div id="personalised-tool-body">
+            <div class="edu-tool-body">
+              <p style="color: var(--muted); font-size: 14px;">Generating a personalised tool recommendation for your subject and year groups...</p>
+            </div>
+          </div>
+          <div class="resource-footer" style="padding: 14px 20px; display: flex; justify-content: flex-end; background: var(--surface2);">
+            <a id="personalised-tool-link" href="#" target="_blank" class="resource-link-btn">Visit Tool →</a>
+          </div>
         </div>
-        <div class="resource-badges">
-          <span class="resource-badge badge-compliant">✔ Policy Compliant</span>
-          <span class="resource-badge badge-recommended">★ Recommended</span>
-          <span class="resource-badge badge-school-provided">Often school-provided</span>
-        </div>
-      </div>
-      <div class="resource-desc">
-        Tassomai is a UK-built AI revision platform that personalises practice using spaced repetition — a learning science technique proven to improve long-term retention. It identifies gaps in student knowledge and adapts question frequency accordingly. Widely used for GCSE preparation across Science, English, and other core subjects.
-      </div>
-      <div class="resource-use-row">
-        <div class="resource-use-block">
-          <div class="resource-use-label">Best used for</div>
-          <ul class="resource-use-list">
-            <li>Supporting GCSE revision across multiple subjects</li>
-            <li>Setting regular retrieval practice as homework</li>
-            <li>Identifying knowledge gaps before assessments</li>
-            <li>Improving long-term retention through spaced repetition</li>
-          </ul>
-        </div>
-        <div class="resource-use-block">
-          <div class="resource-use-label">Why it's trusted</div>
-          <ul class="resource-use-list">
-            <li>Built and based in the UK</li>
-            <li>Aligned to GCSE courses and specifications</li>
-            <li>Grounded in learning science research</li>
-            <li>Used across thousands of UK classrooms</li>
-          </ul>
-        </div>
-      </div>
-      <div class="resource-footer">
-        <a href="https://www.tassomai.com" target="_blank" class="resource-link-btn">Visit Tassomai →</a>
-      </div>
-    </div>
 
     <div class="resources-gov-banner">
       <div class="resources-gov-title">📋 UK Government Guidance on AI in Education</div>

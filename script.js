@@ -1,18 +1,24 @@
 // ── Answer variables ──
-let answerQ1 = null;
-let answerQ2 = null;
+let answerQ1 = [];
+let answerQ2 = [];
+let answerQ2Groups = [];
 let answerQ3 = null;
 let answerQ4 = null;
 let answerQ5 = null;
 
 function getSubjectName() {
-  const subjects = ["Maths", "English", "Science", "Geography", "History", "Religious Studies", "Business Studies", "Spanish", "French", "Computer Science", "Art"];
+  const subjects = ["Maths", "English", "Science", "Geography", "History", "Religious Studies", "Business Studies", "Spanish", "French", "Computer Science", "Art", "Latin", "Music", "Physical Education"];
   return subjects[answerQ3] || "Your Subject";
 }
 
 function getSchoolType() {
   const schools = ["Primary School", "Secondary School", "Sixth-Form / College"];
   return schools[answerQ1] || "Secondary School";
+}
+
+function getYearGroups() {
+  if (!answerQ2Groups || answerQ2Groups.length === 0) return getSchoolType();
+  return answerQ2Groups.join(', ');
 }
 
 // ── Lesson state ──
@@ -30,6 +36,35 @@ const modules = [
   { title: "6. How your students can safely use AI", description: "x", unlocked: false },
   { title: "7. Navigating future AI evolution", unlocked: false }
 ];
+
+const yearGroupsBySchool = {
+  0: ['Reception', 'Year 1', 'Year 2', 'Year 3', 'Year 4', 'Year 5', 'Year 6'],
+  1: ['Year 7', 'Year 8', 'Year 9', 'Year 10', 'Year 11'],
+  2: ['Year 12', 'Year 13']
+};
+
+function buildQ2Options() {
+  const container = document.getElementById('q2-options');
+  container.innerHTML = '';
+  answerQ2 = [];
+  document.getElementById('q2-continue-btn').disabled = true;
+
+  const yearGroups = [];
+  answerQ1.forEach(schoolIndex => {
+    const groups = yearGroupsBySchool[schoolIndex] || [];
+    groups.forEach(g => {
+      if (!yearGroups.includes(g)) yearGroups.push(g);
+    });
+  });
+
+  yearGroups.forEach((group, i) => {
+    const div = document.createElement('div');
+    div.className = 'option-btn';
+    div.textContent = group;
+    div.onclick = () => toggleQ2Option(div, group);
+    container.appendChild(div);
+  });
+}
 
 // ── Lesson 1.4 pre-quiz ──
 const lesson4Quiz = [
@@ -143,12 +178,9 @@ const lessons = [
             <p>When a user enters a question or instruction (known as a <strong>prompt</strong>), the AI breaks the text into smaller units (called tokens), analyses the relationships between them, and interprets the likely intent of the user.</p>
             <div class="example-box">
               <div class="example-label">📖 Example</div>
-              <p style="margin:0; font-size:14px;">If a teacher asks: <em>"Explain photosynthesis for Year 7 students"</em></p>
-              <ul class="lesson-list" style="margin-top:8px;">
-                <li>The topic — photosynthesis</li>
-                <li>The task — explain</li>
-                <li>The audience — Year 7 level</li>
-              </ul>
+              <div id="lesson2-example">
+                <p style="margin:0; font-size:14px; color: var(--muted);">Generating a personalised example...</p>
+              </div>
             </div>
           </div>
         </div>
@@ -503,6 +535,38 @@ const lessons = [
 { title: "1.5 - How AI applies to Your Subject", body: "Content 5", info: null, generated: false },
 ];
 
+function toggleQ1Option(el, index) {
+  el.classList.toggle('selected');
+  if (el.classList.contains('selected')) {
+    if (!answerQ1.includes(index)) answerQ1.push(index);
+  } else {
+    answerQ1 = answerQ1.filter(i => i !== index);
+  }
+  document.getElementById('q1-continue-btn').disabled = answerQ1.length === 0;
+}
+
+function submitQ1() {
+  if (answerQ1.length === 0) return;
+  buildQ2Options();
+  showScreen('screen-q2');
+}
+
+function toggleQ2Option(el, group) {
+  el.classList.toggle('selected');
+  if (el.classList.contains('selected')) {
+    if (!answerQ2.includes(group)) answerQ2.push(group);
+  } else {
+    answerQ2 = answerQ2.filter(g => g !== group);
+  }
+  document.getElementById('q2-continue-btn').disabled = answerQ2.length === 0;
+}
+
+function submitQ2() {
+  if (answerQ2.length === 0) return;
+  answerQ2Groups = answerQ2;
+  showScreen('screen-q3');
+}
+
 // ── Show a screen ──
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -520,12 +584,30 @@ function showScreen(id) {
     if (btn) {
       if (lessonState.length > 0) {
         btn.textContent = 'Resume Learning →';
-      } else if (answerQ1 !== null) {
+      } else if (answerQ1.length > 0) {
         btn.textContent = 'Continue Setup →';
       } else {
         btn.textContent = 'Start Your Learning Path →';
       }
     }
+  }
+
+  if (id === 'screen-q1') {
+    document.addEventListener('keydown', function q1Enter(e) {
+      if (e.key === 'Enter') {
+        document.removeEventListener('keydown', q1Enter);
+        submitQ1();
+      }
+    });
+  }
+
+  if (id === 'screen-q2') {
+    document.addEventListener('keydown', function q2Enter(e) {
+      if (e.key === 'Enter') {
+        document.removeEventListener('keydown', q2Enter);
+        submitQ2();
+      }
+    });
   }
 }
 
@@ -581,6 +663,7 @@ function buildLessonState() {
   }
   lessons[4].title = "1.5 - How AI applies to " + getSubjectName();
   generatePersonalisedLesson();
+  generatePersonalisedTool();
 }
 
 // ── Check if a lesson is unlocked ──
@@ -722,7 +805,6 @@ function openLesson(index) {
   }
 }
 
-// ── Build lesson 1.4 pre-quiz ──
 function buildLesson4Quiz() {
   const container = document.getElementById('quiz-questions');
   container.innerHTML = '';
@@ -745,7 +827,6 @@ function buildLesson4Quiz() {
   document.getElementById('quiz-feedback').textContent = '';
 }
 
-// ── Handle a quiz answer selection ──
 function selectQuizAnswer(index, value) {
   window.quizAnswers[index] = value;
 
@@ -760,16 +841,72 @@ function selectQuizAnswer(index, value) {
   if (allAnswered) {
     const correct = window.quizAnswers.filter((ans, i) => ans === lesson4Quiz[i].answer).length;
     setTimeout(() => {
-      if (correct >= 5) {
-        lessonState[3].completed = true;
-        buildLearningPath();
-        showScreen('screen-path');
-      } else {
-        renderLesson();
-        showScreen('screen-lesson');
-      }
-    }, 700);
+      showLesson4Results(correct);
+    }, 600);
   }
+}
+
+// ── Build lesson 1.4 pre-quiz ──
+function showLesson4Results(correct) {
+  const passed = correct >= 5;
+  const resultsDiv = document.getElementById('quiz-results-content');
+
+  const incorrect = lesson4Quiz
+    .map((q, i) => ({ statement: q.statement, userAnswer: window.quizAnswers[i], correct: q.answer }))
+    .filter(q => q.userAnswer !== q.correct);
+
+  let incorrectHTML = '';
+  if (incorrect.length > 0) {
+    incorrectHTML = `
+      <div style="margin-top: 24px; text-align: left;">
+        <div class="dash-section-title" style="margin-bottom: 12px;">Misconceptions to revisit</div>
+        ${incorrect.map(q => `
+          <div class="quiz-question-block" style="margin-bottom: 10px;">
+            <div class="quiz-statement">${q.statement}</div>
+            <div style="display: flex; gap: 12px; margin-top: 8px; font-size: 13px;">
+              <span style="color: #e53e3e; font-weight: 600;">✗ Your answer: ${q.userAnswer ? 'True' : 'False'}</span>
+              <span style="color: #15803d; font-weight: 600;">✓ Correct answer: ${q.correct ? 'True' : 'False'}</span>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+
+  if (passed) {
+    resultsDiv.innerHTML = `
+      <div style="text-align: center; padding: 20px 0;">
+        <div style="font-size: 56px; margin-bottom: 20px;">🎉</div>
+        <h2 class="question-title">You scored ${correct} out of 6!</h2>
+        <p class="question-sub">Well done — you have a good understanding of this content, so you have skipped the lesson on Common Misconceptions.</p>
+        ${incorrectHTML}
+        <button class="primary-btn" style="margin-top: 24px;" onclick="lesson4Skip()">Continue →</button>
+      </div>
+    `;
+  } else {
+    resultsDiv.innerHTML = `
+      <div style="text-align: center; padding: 20px 0;">
+        <div style="font-size: 56px; margin-bottom: 20px;">📖</div>
+        <h2 class="question-title">You scored ${correct} out of 6</h2>
+        <p class="question-sub">Click continue to progress on to the content and help you learn more about AI Common Misconceptions.</p>
+        ${incorrectHTML}
+        <button class="primary-btn" style="margin-top: 24px;" onclick="lesson4Continue()">Continue →</button>
+      </div>
+    `;
+  }
+
+  showScreen('screen-lesson4-results');
+}
+
+function lesson4Skip() {
+  lessonState[3].completed = true;
+  buildLearningPath();
+  showScreen('screen-path');
+}
+
+function lesson4Continue() {
+  renderLesson();
+  showScreen('screen-lesson');
 }
 
 // ── Render the current lesson ──
@@ -830,6 +967,10 @@ document.getElementById('lesson-content').innerHTML = `
   ${bodyHTML}
   ${infoHTML}
 `;
+
+if (currentLessonIndex === 1) {
+  generateLesson2Example();
+}
 }
 
 // ── Complete current lesson ──
@@ -860,8 +1001,9 @@ function goBackToPath() {
 
 // ── Restart ──
 function restart() {
-  answerQ1 = null;
-  answerQ2 = null;
+  answerQ1 = [];
+  answerQ2 = [];
+  answerQ2Groups = [];
   answerQ3 = null;
   answerQ4 = null;
   answerQ5 = null;
@@ -903,7 +1045,7 @@ async function generatePersonalisedLesson(retryCount = 0) {
 
 const schoolType = getSchoolType();
 
-const prompt = `You are an instructional designer creating content for a teacher CPD platform about AI in education. The teacher teaches ${subject} at a ${schoolType}. Make the content difficulty level specific to this type of school where Primary School is Reception to Year 6, Secondary school is Year 7 to Year 11, Sixth Form/College is Year 12 to Year 13.
+const prompt = `You are an instructional designer creating content for a teacher CPD platform about AI in education. The teacher teaches ${subject} to the following year groups: ${getYearGroups()}. Make the content difficulty level and examples specific to these year groups. If they teach more than one year group do not increase content from what is asked of you below, instead split the content equally between these year groups. So for example, you could have one example for one year, then an example for another. If you include a prompt example then have 'Prompt Example' in the heading of that section. Also have the prompt itself in bold.
 
 IMPORTANT: You must write a FULL, DETAILED lesson with multiple sections. A short response is not acceptable. Aim for 400 - 600 words of content.
 
@@ -913,10 +1055,10 @@ Introduction
 Write a paragraph explaining why AI is particularly relevant to ${subject} teachers and how it is changing the subject area.
 
 Ways AI Can Help
-Write 3 specific and detailed ways AI tools can help a ${subject} teacher. For each one include a title, a 2-3 sentence explanation, and a not too long concrete example, which is specific to the subject area and school type. Use the principles-grid, principle-card, principle-icon, principle-title, principle-body CSS classes for this section.
+Write 3 specific and detailed ways AI tools can help a ${subject} teacher. For each one include a title, a 2-3 sentence explanation, and a not too long concrete example, which is specific to the subject area and school type. Use the principles-grid, principle-card, principle-icon, principle-title, principle-body CSS classes for this section. For one of the examples, use an example prompt they could use in a chatbot to help their work in some form.
 
 Cautions for ${subject} Teachers
-Write 2 specific cautions a ${subject} teacher should be aware of when using AI, each with a title and explanation. Do not include generic cautions, only ones that specifically affect this subject. Use the info-card and info-card-title CSS classes.
+Write one specific caution a ${subject} teacher should be aware of when using AI, each with a title and explanation. Do not include generic cautions, only ones that specifically affect this subject. Use the info-card and info-card-title CSS classes.
 
 Key Takeaway
 Write a 2-3 sentence summary specifically for ${subject} teachers. Use the info-box CSS class.
@@ -966,9 +1108,9 @@ function goToElearning() {
     showScreen('screen-q5');
   } else if (answerQ3 !== null) {
     showScreen('screen-q4');
-  } else if (answerQ2 !== null) {
+  } else if (answerQ2.length > 0) {
     showScreen('screen-q3');
-  } else if (answerQ1 !== null) {
+  } else if (answerQ1.length > 0) {
     showScreen('screen-q2');
   } else {
     showScreen('screen-q1');
@@ -977,4 +1119,97 @@ function goToElearning() {
 
 function startOrResumeLearning() {
   goToElearning();
+}
+
+async function generateLesson2Example() {
+  const subject = getSubjectName();
+  const yearGroups = getYearGroups();
+  const prompt = 'A teacher teaches ' + subject + ' to ' + yearGroups + '. ' +
+    'Write a short, realistic example of a teacher using an AI chatbot prompt in their ' + subject + ' lessons. ' +
+    'Format your response as clean HTML matching this exact structure with no extra text, no markdown: ' +
+    '<p style="margin:0; font-size:14px;">If a ' + subject + ' teacher asks: <em>"[a realistic AI prompt a ' + subject + ' teacher would use for ' + yearGroups + ']"</em></p>' +
+    '<ul class="lesson-list" style="margin-top:8px;">' +
+    '<li>The topic — [the specific topic from the prompt]</li>' +
+    '<li>The task — [what they are asking the AI to do]</li>' +
+    '<li>The audience — [the year group level]</li>' +
+    '</ul>' +
+    'Only return the HTML. Do not include any explanation or wrapper tags.';
+
+  try {
+    const response = await fetch('https://orange-frost-909d.ryan-trancas.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: prompt })
+    });
+    const data = await response.json();
+    if (!data.candidates || !data.candidates[0]) return;
+    let html = data.candidates[0].content.parts[0].text;
+    html = html.split('```html').join('').split('```').join('').trim();
+    const el = document.getElementById('lesson2-example');
+    if (el) el.innerHTML = html;
+  } catch (error) {
+    console.error('Lesson 2 example error:', error);
+  }
+}
+
+async function generatePersonalisedTool() {
+  const subject = getSubjectName();
+  const yearGroups = getYearGroups();
+
+  const prompt = 'You are helping build an EdTech resource page for a UK teacher. The teacher teaches ' + subject + ' to ' + yearGroups + '. ' +
+    'Find and describe ONE real, existing AI-powered education tool that is specifically useful for ' + subject + ' teachers teaching ' + yearGroups + '. ' +
+    'The tool must: be a real product that exists and has a working website, align with UK government and DfE guidance on AI in education, be appropriate for ' + yearGroups + ', and ideally be used in UK schools. ' +
+    'Do not suggest ChatGPT, Gemini, Claude, Copilot, Oak National Academy or Sparx Learning, as these are already featured. ' +
+    'Format your response as clean HTML using ONLY these CSS classes: edu-tool-body, edu-tool-cols, edu-col, edu-col-label, lesson-list, edu-example, edu-example-label. ' +
+    'Follow this exact structure: ' +
+    '<div class="edu-tool-body">' +
+    '<p>[2 sentence description of what the tool does and why it is relevant to ' + subject + ' teachers]</p>' +
+    '<div class="edu-tool-cols">' +
+    '<div class="edu-col"><div class="edu-col-label">📅 When to use</div><ul class="lesson-list"><li>[use case 1]</li><li>[use case 2]</li><li>[use case 3]</li></ul></div>' +
+    '<div class="edu-col"><div class="edu-col-label">✅ Why it is trusted</div><p class="edu-col-text">[2 sentences on why this tool is trusted, including UK relevance and DfE alignment where applicable]</p></div>' +
+    '</div>' +
+    '<div class="edu-example"><span class="edu-example-label">Example</span>[A realistic 2 sentence example of a ' + subject + ' teacher using this tool with ' + yearGroups + ']</div>' +
+    '</div>' +
+    'Before the div, output the tool name and website URL in this exact format on the first line only: TOOLNAME|||TOOLURL ' +
+    'Then on the next line start the HTML. Do not include any explanation, markdown, or backticks.';
+
+  try {
+    const response = await fetch('https://orange-frost-909d.ryan-trancas.workers.dev', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt: prompt })
+    });
+    const data = await response.json();
+    if (!data.candidates || !data.candidates[0]) return;
+
+    let raw = data.candidates[0].content.parts[0].text;
+    raw = raw.split('```html').join('').split('```').join('').trim();
+
+    const lines = raw.split('\n');
+    const firstLine = lines[0];
+    const htmlContent = lines.slice(1).join('\n').trim();
+
+    let toolName = 'AI Tool for ' + subject;
+    let toolUrl = '#';
+
+    if (firstLine.includes('|||')) {
+      const parts = firstLine.split('|||');
+      toolName = parts[0].trim();
+      toolUrl = parts[1].trim();
+    }
+
+    const header = document.getElementById('personalised-tool-header');
+    const body = document.getElementById('personalised-tool-body');
+    const link = document.getElementById('personalised-tool-link');
+
+    if (header) header.textContent = toolName;
+    if (body) body.innerHTML = htmlContent;
+    if (link) {
+      link.href = toolUrl;
+      link.textContent = 'Visit ' + toolName + ' →';
+    }
+
+  } catch (error) {
+    console.error('Personalised tool error:', error);
+  }
 }
