@@ -986,6 +986,7 @@ function completeLesson() {
   if (allDone) {
     module1Complete = true;
     showScreen('screen-complete');
+    setTimeout(showCertificate, 1000);
     return;
   }
 
@@ -1049,7 +1050,7 @@ const prompt = `You are an instructional designer creating content for a teacher
 
 IMPORTANT: You must write a FULL, DETAILED lesson with multiple sections. A short response is not acceptable. Aim for 400 - 600 words of content.
 
-Write a detailed and engaging lesson called "How AI applies to ${subject} teaching" that covers ALL of the following sections — do not skip any:
+Write a detailed and engaging lesson that covers ALL of the following sections — do not skip any:
 
 Introduction
 Write a paragraph explaining why AI is particularly relevant to ${subject} teachers and how it is changing the subject area.
@@ -1212,4 +1213,18 @@ async function generatePersonalisedTool() {
   } catch (error) {
     console.error('Personalised tool error:', error);
   }
+}
+
+function showCertificate() {
+  const now = new Date();
+  const date = now.toLocaleDateString('en-GB');
+  const time = now.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+  document.getElementById('cert-date').textContent = date;
+  document.getElementById('cert-time').textContent = time;
+  const modal = document.getElementById('certificate-modal');
+  modal.style.display = 'flex';
+}
+
+function closeCertificate() {
+  document.getElementById('certificate-modal').style.display = 'none';
 }

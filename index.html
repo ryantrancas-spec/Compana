@@ -12,7 +12,7 @@
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="nav-logo">Compana</div>
+    <img src="Compana_Logo.png" alt="Compana" class="nav-logo-img" />
     <div class="nav-tag">Beta</div>
   </nav>
 
@@ -805,23 +805,48 @@
   </div>
 </div>
         
-    </div><!-- end main-content -->
+</div><!-- end main-content -->
   </div><!-- end layout -->
 
-  <script src="script.js"></script>
-<script>
-  function toggleSidebar() {
-    const sidebar = document.getElementById('sidebar');
-    const icon = document.getElementById('toggle-icon');
-    sidebar.classList.toggle('collapsed');
-    icon.textContent = sidebar.classList.contains('collapsed') ? '☰' : '✕';
-  }
+  <!-- Certificate Modal -->
+  <div id="certificate-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000; align-items:center; justify-content:center;">
+    <div style="position:relative; background:white; border-radius:16px; padding:32px; max-width:520px; width:90%; max-height:90vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+      <button onclick="closeCertificate()" style="position:absolute; top:14px; right:16px; background:none; border:none; font-size:22px; cursor:pointer; color:#64748b; line-height:1;">✕</button>
+      <div style="border:3px solid #3b9ede; border-radius:12px; padding:32px 28px; text-align:center; background:#f0f4f8;">
+        <img src="Compana_Logo.png" alt="Compana" style="height:48px; width:auto; margin-bottom:24px;" />
+        <h2 style="font-family:'DM Serif Display',serif; font-size:22px; color:#0f2d5e; margin-bottom:8px;">Certificate of Achievement</h2>
+        <h3 style="font-family:'DM Serif Display',serif; font-size:18px; color:#1a2332; font-weight:400; margin-bottom:28px;">Module 1: Understanding the Foundations of AI</h3>
+        <p style="font-size:14px; color:#475569; line-height:1.8; margin-bottom:20px;">This document certifies that you have <strong>completed</strong> Module 1 of the Compana Learning Management System, studying <em>'Understanding the Foundations of AI'</em>.</p>
+        <p style="font-size:15px; font-weight:600; color:#0f2d5e; margin-bottom:24px;">Well done!</p>
+        <div style="border-top:1px solid #e2e8f0; padding-top:20px; margin-bottom:20px;">
+          <p style="font-size:13px; color:#64748b; margin-bottom:4px;">Next to complete:</p>
+          <p style="font-size:14px; font-weight:600; color:#0f2d5e;">Module 2: The Benefits, Risks &amp; Limitations of AI</p>
+        </div>
+        <div style="border-top:1px solid #e2e8f0; padding-top:20px;">
+          <p style="font-size:16px; font-family:'DM Serif Display',serif; color:#1a2332; margin-bottom:6px;">Date: <span id="cert-date"></span></p>
+          <p style="font-size:16px; font-family:'DM Serif Display',serif; color:#1a2332;">Time: <span id="cert-time"></span></p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:20px;">
+        <button onclick="closeCertificate()" class="primary-btn">Continue Exploring →</button>
+      </div>
+    </div>
+  </div>
 
-  function activateSidebarItem(index) {
-    document.querySelectorAll('.sidebar-item').forEach((el, i) => {
-      el.classList.toggle('active', i === index);
-    });
-  }
-</script>
+  <script src="script.js"></script>
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const icon = document.getElementById('toggle-icon');
+      sidebar.classList.toggle('collapsed');
+      icon.textContent = sidebar.classList.contains('collapsed') ? '☰' : '✕';
+    }
+    function activateSidebarItem(index) {
+      document.querySelectorAll('.sidebar-item').forEach((el, i) => {
+        el.classList.toggle('active', i === index);
+      });
+    }
+  </script>
+
 </body>
 </html>
