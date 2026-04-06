@@ -55,6 +55,16 @@
 
     <!-- E-Learning Hero (left/main) -->
     <div class="home-main">
+      <div class="home-policy-card" onclick="openPolicyModal()">
+        <div class="home-policy-left">
+          <span class="home-policy-icon">📋</span>
+          <div>
+            <div class="home-policy-title">Upload Your School's AI Policy</div>
+            <div class="home-policy-sub">* For senior teachers - Get course content and recommendations for your teachers tailored to your school's specific AI guidelines — simply upload your policy document to get started.</div>
+          </div>
+        </div>
+        <button class="home-policy-btn" onclick="openPolicyModal()">Upload Policy →</button>
+      </div>
       <div class="home-elearning-card">
         <div class="home-elearning-top">
           <div class="welcome-badge" style="margin-bottom: 16px;">Education For Educators</div>
@@ -618,74 +628,26 @@
       </div>
     </div>
 
-    <div class="resource-card resource-card-featured">
+<div class="resource-card resource-card-featured">
       <div class="resource-card-header">
         <div class="resource-logo-wrap">
-          <img src="https://www.sparxmaths.com/favicon.ico" alt="Sparx" class="resource-logo" onerror="this.style.display='none'" />
+          <span style="font-size:22px;">🤖</span>
         </div>
         <div class="resource-card-title-block">
-          <div class="resource-name">Sparx Learning</div>
-          <div class="resource-maker">Sparx</div>
+          <div class="resource-name" id="personalised-tool-header">Finding a tool for your subject...</div>
+          <div class="resource-maker">Personalised Pick</div>
         </div>
         <div class="resource-badges">
-          <span class="resource-badge badge-compliant">✔ Policy Compliant</span>
-          <span class="resource-badge badge-recommended">★ Recommended</span>
-          <span class="resource-badge badge-school-provided">Often school-provided</span>
+          <span class="resource-badge badge-recommended">★ Personalised</span>
         </div>
       </div>
-      <div class="resource-desc">
-        Sparx uses AI to set personalised maths and reading homework that adapts to each student's level. It provides immediate feedback to students and detailed progress data to teachers — making it one of the most widely adopted AI-powered learning tools in UK secondary schools. Many schools subscribe at an institutional level.
-      </div>
-      <div class="resource-use-row">
-        <div class="resource-use-block">
-          <div class="resource-use-label">Best used for</div>
-          <ul class="resource-use-list">
-            <li>Setting structured, personalised weekly homework</li>
-            <li>Reinforcing classroom learning through practice</li>
-            <li>Tracking student engagement and completion</li>
-            <li>Identifying students who are struggling</li>
-          </ul>
-        </div>
-        <div class="resource-use-block">
-          <div class="resource-use-label">Why it's trusted</div>
-          <ul class="resource-use-list">
-            <li>Widely adopted across UK secondary schools</li>
-            <li>Built for classroom use with teacher oversight</li>
-            <li>Student data kept secure within school systems</li>
-            <li>Evidence-based approach to homework and practice</li>
-          </ul>
-        </div>
+      <div id="personalised-tool-body">
+        <div class="resource-desc" style="color: var(--muted); font-size: 14px;">Generating a personalised tool recommendation for your subject and year groups...</div>
       </div>
       <div class="resource-footer">
-        <a href="https://www.sparxmaths.com" target="_blank" class="resource-link-btn">Visit Sparx Learning →</a>
+        <a id="personalised-tool-link" href="#" target="_blank" class="resource-link-btn">Visit Tool →</a>
       </div>
     </div>
-
-    <div class="resource-card resource-card-featured">
-      <div class="resource-card-header">
-        <div class="resource-logo-wrap">
-          <img src="https://www.tassomai.com/favicon.ico" alt="Tassomai" class="resource-logo" onerror="this.style.display='none'" />
-        </div>
-        <div class="edu-tool-card">
-          <div class="edu-tool-header">
-            <div class="edu-tool-logo-wrap">
-              <span class="edu-tool-emoji">🤖</span>
-            </div>
-            <div>
-              <div class="edu-tool-name" id="personalised-tool-header">Finding a tool for your subject...</div>
-              <div class="edu-tool-sub">Recommended for your subject</div>
-            </div>
-            <span class="edu-tool-tag">Personalised Pick</span>
-          </div>
-          <div id="personalised-tool-body">
-            <div class="edu-tool-body">
-              <p style="color: var(--muted); font-size: 14px;">Generating a personalised tool recommendation for your subject and year groups...</p>
-            </div>
-          </div>
-          <div class="resource-footer" style="padding: 14px 20px; display: flex; justify-content: flex-end; background: var(--surface2);">
-            <a id="personalised-tool-link" href="#" target="_blank" class="resource-link-btn">Visit Tool →</a>
-          </div>
-        </div>
 
     <div class="resources-gov-banner">
       <div class="resources-gov-title">📋 UK Government Guidance on AI in Education</div>
@@ -699,8 +661,8 @@
 <!-- SCREEN: Manager Dashboard -->
 <div class="screen" id="screen-manager">
   <div class="container">
-    <h1 class="question-title">Manager Dashboard</h2>
-    <p class="question-sub">Track your staff's progress through our microcourse across all modules and lessons.</p>
+    <h2 class="question-title">Manager Dashboard</h2>
+    <p class="question-sub">Track your staff's progress through our microcourse across all modules and lessons - we will keep track of and share which lessons & modules teachers have completed, how long they spent on these, and when their most recent log in was.</p>
 
     <div class="dash-stats">
       <div class="dash-stat-card">
@@ -805,9 +767,117 @@
   </div>
 </div>
         
-</div><!-- end main-content -->
+    </div><!-- end main-content -->
   </div><!-- end layout -->
 
+<!-- Policy Upload Modal -->
+<div id="policy-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000; align-items:flex-start; justify-content:center; overflow-y:auto; padding: 40px 16px;">
+  <div style="position:relative; background:white; border-radius:16px; padding:36px; max-width:680px; width:100%; box-shadow:0 20px 60px rgba(0,0,0,0.3); margin: auto;">
+    
+    <button onclick="closePolicyModal()" style="position:absolute; top:14px; right:16px; background:none; border:none; font-size:22px; cursor:pointer; color:#64748b; line-height:1;">✕</button>
+    
+    <h2 style="font-family:'DM Serif Display',serif; font-size:24px; color:#0f2d5e; margin-bottom:8px;">Upload Your School's AI Policy</h2>
+    <p style="font-size:14px; color:#64748b; margin-bottom:24px; line-height:1.7;">* For senior staff - Upload your school's AI policy document so Compana can tailor lesson content and recommendations to your teachers that align with your school's specific guidelines. Accepted formats: PDF, DOC, DOCX.</p>
+
+    <div class="policy-upload-zone" onclick="alert('This feature is coming soon — as this is a prototype, document upload is not yet available. In the full release, your AI policy will be used to personalise your learning content and recommendations.')">
+      <div style="font-size:36px; margin-bottom:12px;">📁</div>
+      <div style="font-size:15px; font-weight:600; color:#0f2d5e; margin-bottom:4px;">Click to upload your policy document</div>
+      <div style="font-size:13px; color:#94a3b8;">PDF, DOC or DOCX — max 10MB</div>
+      <input type="file" id="policy-file-input" accept=".pdf,.doc,.docx" style="display:none;" onchange="handlePolicyUpload(this)" />
+    </div>
+
+    <div id="policy-upload-status" style="display:none; margin-top:16px; padding:14px 18px; background:#f0fdf4; border:1.5px solid #bbf7d0; border-radius:12px; font-size:14px; color:#15803d; font-weight:500;">
+      ✔ Policy document uploaded successfully. Your learning content will be aligned to your school's guidelines.
+    </div>
+
+    <div style="margin-top:32px; padding-top:28px; border-top:2px solid #f0f4f8;">
+      <h3 style="font-family:'DM Serif Display',serif; font-size:18px; color:#0f2d5e; margin-bottom:6px;">What Should a School AI Policy Include?</h3>
+      <p style="font-size:13px; color:#64748b; margin-bottom:20px;">Use the template below as a guide for developing or reviewing your school's AI policy.</p>
+
+      <div class="policy-template">
+
+        <div class="policy-section">
+          <div class="policy-section-num">A</div>
+          <div class="policy-section-content">
+            <div class="policy-section-title">Introduction & Purpose</div>
+            <div class="policy-section-body">Set out why the school is introducing an AI policy, what AI means in an educational context, and the school's overall approach to embracing AI responsibly. Reference alignment with DfE guidance on generative AI in education.</div>
+          </div>
+        </div>
+
+        <div class="policy-section">
+          <div class="policy-section-num">B</div>
+          <div class="policy-section-content">
+            <div class="policy-section-title">Scope & Responsibilities</div>
+            <div class="policy-section-body">Define who the policy applies to — staff, pupils, governors, contractors. Name the key leads responsible for AI oversight, such as a Senior Leader, Data Protection Officer, and IT Director. Clarify how the policy links to existing safeguarding, data protection, and acceptable use policies.</div>
+          </div>
+        </div>
+
+        <div class="policy-section">
+          <div class="policy-section-num">C</div>
+          <div class="policy-section-content">
+            <div class="policy-section-title">Staff Use of AI</div>
+            <div class="policy-section-body">Outline what AI tools staff are permitted to use and for which tasks — such as lesson planning, marking, report writing, and resource creation. Emphasise that professional judgement must always remain central, and that staff are accountable for all AI-generated outputs they use.</div>
+          </div>
+        </div>
+
+        <div class="policy-section">
+          <div class="policy-section-num">D</div>
+          <div class="policy-section-content">
+            <div class="policy-section-title">Pupil Use of AI</div>
+            <div class="policy-section-body">Define acceptable AI use by pupils, including any age-appropriate tools approved by the school. Set out expectations around transparency — pupils should be clear about where AI has assisted their work. Reinforce safeguarding principles: pupils must not share personal data with AI tools.</div>
+          </div>
+        </div>
+
+        <div class="policy-section">
+          <div class="policy-section-num">E</div>
+          <div class="policy-section-content">
+            <div class="policy-section-title">Academic Integrity & Misuse</div>
+            <div class="policy-section-body">Clarify what constitutes misuse — including using AI to complete assessed work dishonestly. Reference relevant exam board guidance (e.g. JCQ) on AI use in assessments. Set out consequences for misuse and how staff will identify it.</div>
+          </div>
+        </div>
+
+        <div class="policy-section">
+          <div class="policy-section-num">F</div>
+          <div class="policy-section-content">
+            <div class="policy-section-title">Ethical Use & Bias Awareness</div>
+            <div class="policy-section-body">Acknowledge that AI outputs can reflect bias, inaccuracy, or outdated information. Require staff and pupils to critically evaluate AI-generated content. Promote fairness and inclusion in all AI-assisted activities.</div>
+          </div>
+        </div>
+
+        <div class="policy-section">
+          <div class="policy-section-num">G</div>
+          <div class="policy-section-content">
+            <div class="policy-section-title">Data Protection</div>
+            <div class="policy-section-body">Prohibit the entry of personal, sensitive, or confidential data into any generative AI tool. Require a Data Protection Impact Assessment (DPIA) before introducing new AI tools. Ensure compliance with UK GDPR and the school's existing data protection policy.</div>
+          </div>
+        </div>
+
+        <div class="policy-section">
+          <div class="policy-section-num">H</div>
+          <div class="policy-section-content">
+            <div class="policy-section-title">Cyber Security</div>
+            <div class="policy-section-body">Outline measures to ensure AI tools used are technically secure. Require evaluation of any AI tool's security features before adoption. Train staff and pupils to recognise AI-enabled threats such as deepfakes and impersonation.</div>
+          </div>
+        </div>
+
+        <div class="policy-section">
+          <div class="policy-section-num">I</div>
+          <div class="policy-section-content">
+            <div class="policy-section-title">Review & Monitoring</div>
+            <div class="policy-section-body">Commit to regular policy review — at least annually, or sooner if significant new guidance is issued by the DfE or relevant bodies. Name who is responsible for the review and how updates will be communicated to staff and pupils.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="text-align:right; margin-top:24px;">
+      <button onclick="closePolicyModal()" class="primary-btn">Close</button>
+    </div>
+
+  </div>
+</div>
+    
   <!-- Certificate Modal -->
   <div id="certificate-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000; align-items:center; justify-content:center;">
     <div style="position:relative; background:white; border-radius:16px; padding:32px; max-width:520px; width:90%; max-height:90vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.3);">

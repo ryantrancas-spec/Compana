@@ -385,41 +385,23 @@ const lessons = [
       <div class="edu-tool-card">
         <div class="edu-tool-header">
           <div class="edu-tool-logo-wrap">
-            <img src="https://www.tassomai.com/favicon.ico"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-              alt="Tassomai" class="edu-tool-favicon" />
-            <span class="edu-tool-emoji" style="display:none;">🧠</span>
+            <span class="edu-tool-emoji">🤖</span>
           </div>
           <div>
-            <div class="edu-tool-name">Tassomai</div>
-            <div class="edu-tool-sub">Retrieval practice & revision</div>
+            <div class="edu-tool-name" id="lesson3-tool-header">Finding a tool for your subject...</div>
+            <div class="edu-tool-sub">Recommended for your subject</div>
           </div>
-          <span class="edu-tool-tag">Revision</span>
+          <span class="edu-tool-tag">Personalised Pick</span>
         </div>
-        <div class="edu-tool-body">
-          <p>Tassomai personalises revision by identifying what students know and what they need to revisit, using spaced repetition techniques grounded in learning science.</p>
-          <div class="edu-tool-cols">
-            <div class="edu-col">
-              <div class="edu-col-label">📅 When to use</div>
-              <ul class="lesson-list">
-                <li>Preparing students for assessments</li>
-                <li>Supporting long-term knowledge retention</li>
-                <li>Identifying gaps in understanding</li>
-              </ul>
-            </div>
-            <div class="edu-col">
-              <div class="edu-col-label">✅ Why it's trusted</div>
-              <p class="edu-col-text">Developed in the UK, aligned to GCSE courses, and grounded in learning science — reliable for improving retention and exam readiness.</p>
-            </div>
-          </div>
-          <div class="edu-example">
-            <span class="edu-example-label">Example</span>
-            A science teacher uses Tassomai to set regular revision quizzes. The platform adapts questions based on responses, ensuring weaker areas are revisited more frequently.
+        <div id="lesson3-tool-body">
+          <div class="edu-tool-body">
+            <p style="color: var(--muted); font-size: 14px;">Generating a personalised tool recommendation for your subject and year groups...</p>
           </div>
         </div>
-      </div>
-
-    </section>
+        <div class="edu-tool-body" style="padding-top:0;">
+          <a id="lesson3-tool-link" href="#" target="_blank" class="resource-link-btn" style="display:inline-block;">Visit Tool →</a>
+        </div>
+      </div>      
 
     <section class="lesson-section">
       <h3>Key Message for Teachers</h3>
@@ -430,12 +412,20 @@ const lessons = [
           <p style="font-size:14px; color:#475569; margin:0;">Promotes AI as a tool to support teaching and reduce workload.</p>
         </div>
         <div class="info-card">
-          <div class="info-card-title">🏫 School Policies</div>
-          <p style="font-size:14px; color:#475569; margin:0;">Require AI to be used responsibly, with teacher oversight and safeguarding in place.</p>
+          <div class="info-card-title">🏫 YOUR SCHOOL'S POLICY</div>
+          <p style="font-size:14px; color:#475569; margin:0;">Using the uploaded school's policy we would have a brief paragraph about how these tools can be used based on your school's AI policy.</p>
         </div>
       </div>
       <div class="info-box" style="margin-top: 20px;">
         👉 Crucially, these tools are designed to <strong>support — not replace</strong> — teacher expertise, ensuring that professional judgement remains at the centre of the classroom.
+      </div>
+    </section>
+
+    <section class="lesson-section">
+      <div class="resources-gov-banner">
+        <div class="resources-gov-title">📋 UK Government Guidance on AI in Education</div>
+        <div class="resources-gov-body">The Department for Education has published guidance on the use of generative AI in education. All tools featured in this lesson have been selected with this guidance in mind — prioritising teacher oversight, data safety, and responsible use.</div>
+        <a href="https://www.gov.uk/government/publications/generative-artificial-intelligence-in-education" target="_blank" class="resource-link-btn" style="display:inline-block; margin-top: 14px;">Read the DfE Guidance →</a>
       </div>
     </section>
   `,
@@ -971,6 +961,10 @@ document.getElementById('lesson-content').innerHTML = `
 if (currentLessonIndex === 1) {
   generateLesson2Example();
 }
+
+if (currentLessonIndex === 2) {
+  populateLesson3Tool();
+}
 }
 
 // ── Complete current lesson ──
@@ -1210,6 +1204,17 @@ async function generatePersonalisedTool() {
       link.textContent = 'Visit ' + toolName + ' →';
     }
 
+    const header3 = document.getElementById('lesson3-tool-header');
+    const body3 = document.getElementById('lesson3-tool-body');
+    const link3 = document.getElementById('lesson3-tool-link');
+
+    if (header3) header3.textContent = toolName;
+    if (body3) body3.innerHTML = htmlContent;
+    if (link3) {
+      link3.href = toolUrl;
+      link3.textContent = 'Visit ' + toolName + ' →';
+    }
+
   } catch (error) {
     console.error('Personalised tool error:', error);
   }
@@ -1227,4 +1232,35 @@ function showCertificate() {
 
 function closeCertificate() {
   document.getElementById('certificate-modal').style.display = 'none';
+}
+
+function openPolicyModal() {
+  const modal = document.getElementById('policy-modal');
+  modal.style.display = 'flex';
+}
+
+function closePolicyModal() {
+  document.getElementById('policy-modal').style.display = 'none';
+}
+
+function handlePolicyUpload(input) {
+  alert('This feature is coming soon — as this is a prototype, document upload is not yet available. In the full release, your AI policy will be used to personalise your learning content and recommendations.');
+  input.value = '';
+}
+
+function populateLesson3Tool() {
+  const header = document.getElementById('lesson3-tool-header');
+  const body = document.getElementById('lesson3-tool-body');
+  const link = document.getElementById('lesson3-tool-link');
+
+  const resourceHeader = document.getElementById('personalised-tool-header');
+  const resourceBody = document.getElementById('personalised-tool-body');
+  const resourceLink = document.getElementById('personalised-tool-link');
+
+  if (header && resourceHeader) header.textContent = resourceHeader.textContent;
+  if (body && resourceBody) body.innerHTML = resourceBody.innerHTML;
+  if (link && resourceLink) {
+    link.href = resourceLink.href;
+    link.textContent = resourceLink.textContent;
+  }
 }
