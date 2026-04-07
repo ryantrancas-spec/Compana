@@ -66,6 +66,13 @@ function buildQ2Options() {
   });
 }
 
+const module1Quiz = [
+  { correct: 1 },
+  { correct: 2 },
+  { correct: 1 }
+];
+let moduleQuizAnswers = [null, null, null];
+
 // ── Lesson 1.4 pre-quiz ──
 const lesson4Quiz = [
   { statement: "AI is always accurate.", answer: false },
@@ -119,7 +126,7 @@ const lessons = [
         </div>
       </div>
 
-      <div class="info-box">Government guidance emphasises that while AI can help make some tasks quicker, <strong>teachers remain responsible</strong> for reviewing and verifying any content generated, as AI outputs can sometimes be inaccurate, biased, outdated, or inappropriate.</div>
+      <div class="info-box">Government guidance emphasises that while AI can help make some tasks quicker, <strong>teachers remain responsible</strong> for reviewing and verifying any content generated, as AI outputs can sometimes be inaccurate, biased, outdated, or inappropriate. <strong>Your school's policy</strong> shows that generative AI can be used to help manage your workload, but not used in front of students <i>- this is a brief example of how and where your school's AI policy could be integrated within our guidance</i> .</div>
     </section>
   `,
   info: null,
@@ -413,7 +420,7 @@ const lessons = [
         </div>
         <div class="info-card">
           <div class="info-card-title">🏫 YOUR SCHOOL'S POLICY</div>
-          <p style="font-size:14px; color:#475569; margin:0;">Using the uploaded school's policy we would have a brief paragraph about how these tools can be used based on your school's AI policy.</p>
+          <p style="font-size:14px; color:#475569; margin:0;">Your school allows the use of the above AI tools, but not the use of DeepSeek <i>- this is a brief example of how we could integrate your school's AI policy into how and which AI tools we recommend</i>.</p>
         </div>
       </div>
       <div class="info-box" style="margin-top: 20px;">
@@ -978,9 +985,16 @@ function completeLesson() {
 
   const allDone = lessonState.every(s => s.completed || s.skipped);
   if (allDone) {
-    module1Complete = true;
-    showScreen('screen-complete');
-    setTimeout(showCertificate, 1000);
+    moduleQuizAnswers = [null, null, null];
+    document.querySelectorAll('[id^="mq-"]').forEach(el => {
+      if (el.classList.contains('option-btn')) {
+        el.classList.remove('selected');
+        el.disabled = false;
+        el.style.background = '';
+      }
+    });
+    document.getElementById('mq-feedback').style.display = 'none';
+    showScreen('screen-module1-quiz');
     return;
   }
 
@@ -1263,4 +1277,82 @@ function populateLesson3Tool() {
     link.href = resourceLink.href;
     link.textContent = resourceLink.textContent;
   }
+}
+
+function selectModuleQuiz(questionIndex, answerIndex) {
+  moduleQuizAnswers[questionIndex] = answerIndex;
+
+  const btns = document.querySelectorAll(`#mq-${questionIndex}-options .option-btn`);
+  btns.forEach((btn, i) => {
+    btn.classList.toggle('selected', i === answerIndex);
+    btn.disabled = true;
+  });
+
+  const allAnswered = moduleQuizAnswers.every(a => a !== null);
+  if (allAnswered) {
+    setTimeout(showModuleQuizResults, 600);
+  }
+}
+
+function showModuleQuizResults() {
+  const correct = moduleQuizAnswers.filter((ans, i) => ans === module1Quiz[i].correct).length;
+  const passed = correct >= 2;
+  const feedback = document.getElementById('mq-feedback');
+
+  document.querySelectorAll('[id^="mq-"][id$="-options"] .option-btn').forEach((btn, i) => {
+    const questionIndex = Math.floor(i / 4);
+    const answerIndex = i % 4;
+    if (answerIndex === module1Quiz[questionIndex].correct) {
+      btn.style.background = '#dcfce7';
+      btn.style.borderColor = '#22c55e';
+      btn.style.color = '#15803d';
+    } else if (btn.classList.contains('selected') && answerIndex !== module1Quiz[questionIndex].correct) {
+      btn.style.background = '#fee2e2';
+      btn.style.borderColor = '#f87171';
+      btn.style.color = '#b91c1c';
+    }
+  });
+
+  if (passed) {
+    feedback.innerHTML = `
+      <div style="background:#f0fdf4; border:1.5px solid #bbf7d0; border-radius:12px; padding:20px 24px; text-align:center;">
+        <div style="font-size:40px; margin-bottom:12px;">🎉</div>
+        <h3 style="font-family:'DM Serif Display',serif; font-size:20px; color:#15803d; margin-bottom:8px;">You passed! ${correct} out of 3 correct</h3>
+        <p style="font-size:14px; color:#475569; margin-bottom:16px;">Well done — you've demonstrated a solid understanding of the foundations of AI. Your certificate is ready.</p>
+        <button class="primary-btn" style="background:#15803d;" onclick="finishModule1()">Claim Your Certificate →</button>
+      </div>
+    `;
+  } else {
+    feedback.innerHTML = `
+      <div style="background:#fff7ed; border:1.5px solid #fed7aa; border-radius:12px; padding:20px 24px; text-align:center;">
+        <div style="font-size:40px; margin-bottom:12px;">📖</div>
+        <h3 style="font-family:'DM Serif Display',serif; font-size:20px; color:#c2410c; margin-bottom:8px;">You scored ${correct} out of 3</h3>
+        <p style="font-size:14px; color:#475569; margin-bottom:16px;">You need 2 or more to pass. Only select one answer per question. Review the lessons and try again.</p>
+        <button class="primary-btn" style="background:#c2410c;" onclick="retryModuleQuiz()">Retry Quiz →</button>
+        <button class="secondary-btn" style="margin-left:12px;" onclick="showScreen('screen-path')">Back to Lessons</button>
+      </div>
+    `;
+  }
+
+  feedback.style.display = 'block';
+  feedback.scrollIntoView({ behavior: 'smooth' });
+}
+
+function finishModule1() {
+  module1Complete = true;
+  showScreen('screen-complete');
+  setTimeout(showCertificate, 400);
+}
+
+function retryModuleQuiz() {
+  moduleQuizAnswers = [null, null, null];
+  document.querySelectorAll('[id^="mq-"][id$="-options"] .option-btn').forEach(btn => {
+    btn.classList.remove('selected');
+    btn.disabled = false;
+    btn.style.background = '';
+    btn.style.borderColor = '';
+    btn.style.color = '';
+  });
+  document.getElementById('mq-feedback').style.display = 'none';
+  window.scrollTo(0, 0);
 }

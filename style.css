@@ -2318,3 +2318,8 @@ body {
     text-align: center;
   }
 }
+
+.module-quiz-block {
+  background: var(--accent-light);
+  border: 1.5px solid #bde0f7;
+}

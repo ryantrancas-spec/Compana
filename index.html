@@ -357,6 +357,46 @@
         </div>
       </div>
 
+<!-- SCREEN: Module 1 Quiz -->
+<div class="screen" id="screen-module1-quiz">
+  <div class="container">
+    <div class="question-chip">Module 1 — Final Assessment</div>
+    <h2 class="question-title">Module 1 Knowledge Check</h2>
+    <p class="question-sub">Answer all 3 questions to complete the module. You need to get at least 2 out of 3 correct to pass.</p>
+
+    <div class="quiz-question-block module-quiz-block" id="mq-block-0">
+      <div class="quiz-statement">1. What is the main way a Large Language Model (LLM) generates a response?</div>
+      <div class="options-stack" style="margin-top: 12px;" id="mq-0-options">
+        <button class="option-btn" onclick="selectModuleQuiz(0, 0)">It searches the internet for the most relevant answer</button>
+        <button class="option-btn" onclick="selectModuleQuiz(0, 1)">It predicts the most likely next word based on patterns in its training data</button>
+        <button class="option-btn" onclick="selectModuleQuiz(0, 2)">It retrieves answers from a stored database of facts</button>
+        <button class="option-btn" onclick="selectModuleQuiz(0, 3)">It understands the question and reasons like a human</button>
+      </div>
+    </div>
+
+    <div class="quiz-question-block module-quiz-block" id="mq-block-1" style="margin-top: 16px;">
+      <div class="quiz-statement">2. Which of the following statements are NOT true?</div>
+      <div class="options-stack" style="margin-top: 12px;" id="mq-1-options">
+        <button class="option-btn" onclick="selectModuleQuiz(1, 0)">AI outputs should always be reviewed by a teacher before use</button>
+        <button class="option-btn" onclick="selectModuleQuiz(1, 1)">AI can reflect bias from the data it was trained on</button>
+        <button class="option-btn" onclick="selectModuleQuiz(1, 2)">AI tools used in education are completely free from bias</button>
+        <button class="option-btn" onclick="selectModuleQuiz(1, 3)">AI tools are not yet used in UK schools</button>
+      </div>
+    </div>
+
+    <div class="quiz-question-block module-quiz-block" id="mq-block-2" style="margin-top: 16px;">
+      <div class="quiz-statement">3. AI is designed to support teacher expertise, not replace it</div>
+      <div class="options-stack" style="margin-top: 12px;" id="mq-2-options">
+        <button class="option-btn" onclick="selectModuleQuiz(2, 0)">True</button>
+        <button class="option-btn" onclick="selectModuleQuiz(2, 1)">False</button>
+      </div>
+    </div>
+
+    <div id="mq-feedback" style="display:none; margin-top: 24px;"></div>
+
+  </div>
+</div>
+      
       <!-- SCREEN 9: Complete -->
       <div class="screen" id="screen-complete">
         <div class="container center">
