@@ -45,10 +45,15 @@
       <span class="sidebar-icon">📊</span>
       <span class="sidebar-label">Manager Dashboard</span>
     </div>
+    <div class="sidebar-item" title="Contact Us" onclick="activateSidebarItem(5); showScreen('screen-contact')">
+      <span class="sidebar-icon">✉️</span>
+      <span class="sidebar-label">Contact Us</span>
+    </div>
   </div>
 </div>
 
     <!-- MAIN CONTENT -->
+<div class="main-content" id="main-content">
  <!-- SCREEN: Home -->
 <div class="screen active" id="screen-home">
   <div class="home-layout">
@@ -78,7 +83,7 @@
           <div class="home-module-row home-module-unlocked">
             <div class="home-module-num">01</div>
             <div class="home-module-name">Understanding the Foundations of AI</div>
-            <span class="home-module-badge badge-open">Open →</span>
+            <span class="home-module-badge badge-open">Click Start Your Learning Path to begin</span>
           </div>
           <div class="home-module-row">
             <div class="home-module-num">02</div>
@@ -828,117 +833,127 @@
   </div>
 </div>
         
+<!-- SCREEN: Contact Us -->
+<div class="screen" id="screen-contact">
+  <div class="container">
+    <div class="question-chip">Contact Us</div>
+    <h2 class="question-title">Get in Touch</h2>
+    <div class="contact-intro">
+      <p>Compana is an EdTech startup Learning Management System built for educators. We are on a mission to ensure every teacher in the UK feels confident using and guiding AI in their classroom - through personalised, bite-sized learning that fits around a busy teaching schedule.</p>
+      <p>You are currently using is an early-stage prototype. We are actively testing Compana with teachers across the UK to gather feedback, understand real classroom needs, and shape the direction of the platform before a full launch. Your experience and opinions matter enormously to us.</p>
+      <p>Whether you have feedback on the platform, questions about what we are building, or are interested in getting involved as a school partner or early adopter, we would love to hear from you.</p>
+    </div>
+    <div class="contact-card">
+      <div class="contact-card-title">📬 Reach Out to Us</div>
+      <p style="font-size:14px; color:var(--muted); margin-bottom:20px; line-height:1.7;">If you have any questions, feedback, or would like to find out more about Compana, please get in touch with us directly at either of the addresses below.</p>
+      <div class="contact-email-row">
+        <span class="contact-email-label">General enquiries</span>
+        <a href="mailto:ryant@compana.it.com" class="contact-email-link">ryant@compana.it.com</a>
+      </div>
+      <div class="contact-email-row">
+        <span class="contact-email-label">Partnerships & schools</span>
+        <a href="mailto:gabrielh@compana.it.com" class="contact-email-link">gabrielh@compana.it.com</a>
+      </div>
+    </div>
+    <div class="contact-prototype-note">
+      <span style="font-weight:600; color:var(--accent-dark);">🔧 Prototype Notice</span> — Compana is currently in prototype stage. Some features are limited or unavailable. We appreciate your patience and welcome any feedback as we continue to develop the platform.
+    </div>
+  </div>
+</div>
+
     </div><!-- end main-content -->
   </div><!-- end layout -->
 
 <!-- Policy Upload Modal -->
-<div id="policy-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000; align-items:flex-start; justify-content:center; overflow-y:auto; padding: 40px 16px;">
-  <div style="position:relative; background:white; border-radius:16px; padding:36px; max-width:680px; width:100%; box-shadow:0 20px 60px rgba(0,0,0,0.3); margin: auto;">
-    
-    <button onclick="closePolicyModal()" style="position:absolute; top:14px; right:16px; background:none; border:none; font-size:22px; cursor:pointer; color:#64748b; line-height:1;">✕</button>
-    
-    <h2 style="font-family:'DM Serif Display',serif; font-size:24px; color:#0f2d5e; margin-bottom:8px;">Upload Your School's AI Policy</h2>
-    <p style="font-size:14px; color:#64748b; margin-bottom:24px; line-height:1.7;">* For senior staff - Upload your school's AI policy document so Compana can tailor lesson content and recommendations to your teachers that align with your school's specific guidelines. Accepted formats: PDF, DOC, DOCX.</p>
-
-    <div class="policy-upload-zone" onclick="alert('This feature is coming soon — as this is a prototype, document upload is not yet available. In the full release, your AI policy will be used to personalise your learning content and recommendations.')">
-      <div style="font-size:36px; margin-bottom:12px;">📁</div>
-      <div style="font-size:15px; font-weight:600; color:#0f2d5e; margin-bottom:4px;">Click to upload your policy document</div>
-      <div style="font-size:13px; color:#94a3b8;">PDF, DOC or DOCX — max 10MB</div>
-      <input type="file" id="policy-file-input" accept=".pdf,.doc,.docx" style="display:none;" onchange="handlePolicyUpload(this)" />
-    </div>
-
-    <div id="policy-upload-status" style="display:none; margin-top:16px; padding:14px 18px; background:#f0fdf4; border:1.5px solid #bbf7d0; border-radius:12px; font-size:14px; color:#15803d; font-weight:500;">
-      ✔ Policy document uploaded successfully. Your learning content will be aligned to your school's guidelines.
-    </div>
-
-    <div style="margin-top:32px; padding-top:28px; border-top:2px solid #f0f4f8;">
-      <h3 style="font-family:'DM Serif Display',serif; font-size:18px; color:#0f2d5e; margin-bottom:6px;">What Should a School AI Policy Include?</h3>
-      <p style="font-size:13px; color:#64748b; margin-bottom:20px;">Use the template below as a guide for developing or reviewing your school's AI policy.</p>
-
-      <div class="policy-template">
-
-        <div class="policy-section">
-          <div class="policy-section-num">A</div>
-          <div class="policy-section-content">
-            <div class="policy-section-title">Introduction & Purpose</div>
-            <div class="policy-section-body">Set out why the school is introducing an AI policy, what AI means in an educational context, and the school's overall approach to embracing AI responsibly. Reference alignment with DfE guidance on generative AI in education.</div>
+  <div id="policy-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000; align-items:flex-start; justify-content:center; overflow-y:auto; padding: 40px 16px;">
+    <div style="position:relative; background:white; border-radius:16px; padding:36px; max-width:680px; width:100%; box-shadow:0 20px 60px rgba(0,0,0,0.3); margin: auto;">
+      <button onclick="closePolicyModal()" style="position:absolute; top:14px; right:16px; background:none; border:none; font-size:22px; cursor:pointer; color:#64748b; line-height:1;">✕</button>
+      <h2 style="font-family:'DM Serif Display',serif; font-size:24px; color:#0f2d5e; margin-bottom:8px;">Upload Your School's AI Policy</h2>
+      <p style="font-size:14px; color:#64748b; margin-bottom:24px; line-height:1.7;">* For senior staff - Upload your school's AI policy document so Compana can tailor lesson content and recommendations to your teachers that align with your school's specific guidelines. Accepted formats: PDF, DOC, DOCX.</p>
+      <div class="policy-upload-zone" onclick="alert('This feature is coming soon — as this is a prototype, document upload is not yet available. In the full release, your AI policy will be used to personalise your learning content and recommendations.')">
+        <div style="font-size:36px; margin-bottom:12px;">📁</div>
+        <div style="font-size:15px; font-weight:600; color:#0f2d5e; margin-bottom:4px;">Click to upload your policy document</div>
+        <div style="font-size:13px; color:#94a3b8;">PDF, DOC or DOCX — max 10MB</div>
+        <input type="file" id="policy-file-input" accept=".pdf,.doc,.docx" style="display:none;" onchange="handlePolicyUpload(this)" />
+      </div>
+      <div id="policy-upload-status" style="display:none; margin-top:16px; padding:14px 18px; background:#f0fdf4; border:1.5px solid #bbf7d0; border-radius:12px; font-size:14px; color:#15803d; font-weight:500;">
+        ✔ Policy document uploaded successfully. Your learning content will be aligned to your school's guidelines.
+      </div>
+      <div style="margin-top:32px; padding-top:28px; border-top:2px solid #f0f4f8;">
+        <h3 style="font-family:'DM Serif Display',serif; font-size:18px; color:#0f2d5e; margin-bottom:6px;">What Should a School AI Policy Include?</h3>
+        <p style="font-size:13px; color:#64748b; margin-bottom:20px;">Use the template below as a guide for developing or reviewing your school's AI policy.</p>
+        <div class="policy-template">
+          <div class="policy-section">
+            <div class="policy-section-num">A</div>
+            <div class="policy-section-content">
+              <div class="policy-section-title">Introduction & Purpose</div>
+              <div class="policy-section-body">Set out why the school is introducing an AI policy, what AI means in an educational context, and the school's overall approach to embracing AI responsibly. Reference alignment with DfE guidance on generative AI in education.</div>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-num">B</div>
+            <div class="policy-section-content">
+              <div class="policy-section-title">Scope & Responsibilities</div>
+              <div class="policy-section-body">Define who the policy applies to — staff, pupils, governors, contractors. Name the key leads responsible for AI oversight, such as a Senior Leader, Data Protection Officer, and IT Director. Clarify how the policy links to existing safeguarding, data protection, and acceptable use policies.</div>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-num">C</div>
+            <div class="policy-section-content">
+              <div class="policy-section-title">Staff Use of AI</div>
+              <div class="policy-section-body">Outline what AI tools staff are permitted to use and for which tasks — such as lesson planning, marking, report writing, and resource creation. Emphasise that professional judgement must always remain central, and that staff are accountable for all AI-generated outputs they use.</div>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-num">D</div>
+            <div class="policy-section-content">
+              <div class="policy-section-title">Pupil Use of AI</div>
+              <div class="policy-section-body">Define acceptable AI use by pupils, including any age-appropriate tools approved by the school. Set out expectations around transparency — pupils should be clear about where AI has assisted their work. Reinforce safeguarding principles: pupils must not share personal data with AI tools.</div>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-num">E</div>
+            <div class="policy-section-content">
+              <div class="policy-section-title">Academic Integrity & Misuse</div>
+              <div class="policy-section-body">Clarify what constitutes misuse — including using AI to complete assessed work dishonestly. Reference relevant exam board guidance (e.g. JCQ) on AI use in assessments. Set out consequences for misuse and how staff will identify it.</div>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-num">F</div>
+            <div class="policy-section-content">
+              <div class="policy-section-title">Ethical Use & Bias Awareness</div>
+              <div class="policy-section-body">Acknowledge that AI outputs can reflect bias, inaccuracy, or outdated information. Require staff and pupils to critically evaluate AI-generated content. Promote fairness and inclusion in all AI-assisted activities.</div>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-num">G</div>
+            <div class="policy-section-content">
+              <div class="policy-section-title">Data Protection</div>
+              <div class="policy-section-body">Prohibit the entry of personal, sensitive, or confidential data into any generative AI tool. Require a Data Protection Impact Assessment (DPIA) before introducing new AI tools. Ensure compliance with UK GDPR and the school's existing data protection policy.</div>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-num">H</div>
+            <div class="policy-section-content">
+              <div class="policy-section-title">Cyber Security</div>
+              <div class="policy-section-body">Outline measures to ensure AI tools used are technically secure. Require evaluation of any AI tool's security features before adoption. Train staff and pupils to recognise AI-enabled threats such as deepfakes and impersonation.</div>
+            </div>
+          </div>
+          <div class="policy-section">
+            <div class="policy-section-num">I</div>
+            <div class="policy-section-content">
+              <div class="policy-section-title">Review & Monitoring</div>
+              <div class="policy-section-body">Commit to regular policy review — at least annually, or sooner if significant new guidance is issued by the DfE or relevant bodies. Name who is responsible for the review and how updates will be communicated to staff and pupils.</div>
+            </div>
           </div>
         </div>
-
-        <div class="policy-section">
-          <div class="policy-section-num">B</div>
-          <div class="policy-section-content">
-            <div class="policy-section-title">Scope & Responsibilities</div>
-            <div class="policy-section-body">Define who the policy applies to — staff, pupils, governors, contractors. Name the key leads responsible for AI oversight, such as a Senior Leader, Data Protection Officer, and IT Director. Clarify how the policy links to existing safeguarding, data protection, and acceptable use policies.</div>
-          </div>
-        </div>
-
-        <div class="policy-section">
-          <div class="policy-section-num">C</div>
-          <div class="policy-section-content">
-            <div class="policy-section-title">Staff Use of AI</div>
-            <div class="policy-section-body">Outline what AI tools staff are permitted to use and for which tasks — such as lesson planning, marking, report writing, and resource creation. Emphasise that professional judgement must always remain central, and that staff are accountable for all AI-generated outputs they use.</div>
-          </div>
-        </div>
-
-        <div class="policy-section">
-          <div class="policy-section-num">D</div>
-          <div class="policy-section-content">
-            <div class="policy-section-title">Pupil Use of AI</div>
-            <div class="policy-section-body">Define acceptable AI use by pupils, including any age-appropriate tools approved by the school. Set out expectations around transparency — pupils should be clear about where AI has assisted their work. Reinforce safeguarding principles: pupils must not share personal data with AI tools.</div>
-          </div>
-        </div>
-
-        <div class="policy-section">
-          <div class="policy-section-num">E</div>
-          <div class="policy-section-content">
-            <div class="policy-section-title">Academic Integrity & Misuse</div>
-            <div class="policy-section-body">Clarify what constitutes misuse — including using AI to complete assessed work dishonestly. Reference relevant exam board guidance (e.g. JCQ) on AI use in assessments. Set out consequences for misuse and how staff will identify it.</div>
-          </div>
-        </div>
-
-        <div class="policy-section">
-          <div class="policy-section-num">F</div>
-          <div class="policy-section-content">
-            <div class="policy-section-title">Ethical Use & Bias Awareness</div>
-            <div class="policy-section-body">Acknowledge that AI outputs can reflect bias, inaccuracy, or outdated information. Require staff and pupils to critically evaluate AI-generated content. Promote fairness and inclusion in all AI-assisted activities.</div>
-          </div>
-        </div>
-
-        <div class="policy-section">
-          <div class="policy-section-num">G</div>
-          <div class="policy-section-content">
-            <div class="policy-section-title">Data Protection</div>
-            <div class="policy-section-body">Prohibit the entry of personal, sensitive, or confidential data into any generative AI tool. Require a Data Protection Impact Assessment (DPIA) before introducing new AI tools. Ensure compliance with UK GDPR and the school's existing data protection policy.</div>
-          </div>
-        </div>
-
-        <div class="policy-section">
-          <div class="policy-section-num">H</div>
-          <div class="policy-section-content">
-            <div class="policy-section-title">Cyber Security</div>
-            <div class="policy-section-body">Outline measures to ensure AI tools used are technically secure. Require evaluation of any AI tool's security features before adoption. Train staff and pupils to recognise AI-enabled threats such as deepfakes and impersonation.</div>
-          </div>
-        </div>
-
-        <div class="policy-section">
-          <div class="policy-section-num">I</div>
-          <div class="policy-section-content">
-            <div class="policy-section-title">Review & Monitoring</div>
-            <div class="policy-section-body">Commit to regular policy review — at least annually, or sooner if significant new guidance is issued by the DfE or relevant bodies. Name who is responsible for the review and how updates will be communicated to staff and pupils.</div>
-          </div>
-        </div>
-
+      </div>
+      <div style="text-align:right; margin-top:24px;">
+        <button onclick="closePolicyModal()" class="primary-btn">Close</button>
       </div>
     </div>
-
-    <div style="text-align:right; margin-top:24px;">
-      <button onclick="closePolicyModal()" class="primary-btn">Close</button>
-    </div>
-
   </div>
-</div>
-    
+
   <!-- Certificate Modal -->
   <div id="certificate-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:1000; align-items:center; justify-content:center;">
     <div style="position:relative; background:white; border-radius:16px; padding:32px; max-width:520px; width:90%; max-height:90vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,0.3);">
