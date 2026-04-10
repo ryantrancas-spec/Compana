@@ -1,3 +1,4 @@
+//Compana Prototype
 // ── Answer variables ──
 let answerQ1 = [];
 let answerQ2 = [];
@@ -312,103 +313,52 @@ const lessons = [
       <p style="margin-top: 16px;">These platforms reflect the approach outlined in UK government guidance, where AI is used to support teaching, reduce workload, and enhance learning, while remaining under teacher oversight. They also align with your school's policy by ensuring AI is used responsibly, ethically, and within classroom guidelines.</p>
 
 <section class="lesson-section">
-      <h3>Education-Specific AI Tools</h3>
-      <p>The following tools are widely trusted within the UK education sector. Unlike general AI tools, they are designed specifically for schools - aligned to the curriculum, built with safeguarding in mind, and used across thousands of classrooms.</p>
+  <h3>Education-Specific AI Tools for Your Subject</h3>
+  <p>The following tools have been selected specifically for your subject and year groups. Unlike general AI tools, they are designed with education in mind — aligned to the curriculum, built with safeguarding considerations, and trusted across UK classrooms.</p>
 
-      <div class="edu-tool-card">
-        <div class="edu-tool-header">
-          <div class="edu-tool-logo-wrap">
-            <img src="https://www.thenational.academy/favicon.ico"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-              alt="Oak" class="edu-tool-favicon" />
-            <span class="edu-tool-emoji" style="display:none;">🌳</span>
-          </div>
-          <div>
-            <div class="edu-tool-name">Oak National Academy</div>
-            <div class="edu-tool-sub">Aila – AI Lesson Assistant</div>
-          </div>
-          <span class="edu-tool-tag">Lesson Planning</span>
-        </div>
-        <div class="edu-tool-body">
-          <p>Oak's AI lesson assistant helps teachers generate structured, curriculum-aligned lesson materials quickly and efficiently.</p>
-          <div class="edu-tool-cols">
-            <div class="edu-col">
-              <div class="edu-col-label">📅 When to use</div>
-              <ul class="lesson-list">
-                <li>Planning new lessons</li>
-                <li>Creating or adapting resources</li>
-                <li>Reducing planning time</li>
-              </ul>
-            </div>
-            <div class="edu-col">
-              <div class="edu-col-label">✅ Why it's trusted</div>
-              <p class="edu-col-text">Backed by a UK government-supported organisation, designed specifically for classroom use with outputs aligned to national standards.</p>
-            </div>
-          </div>
-          <div class="edu-example">
-            <span class="edu-example-label">Example</span>
-            A teacher inputs "Year 8 ecosystems" and receives a ready-made lesson structure — explanations, activities, and assessment questions — which they adapt to suit their class.
-          </div>
-        </div>
+  <div class="edu-tool-card">
+    <div class="edu-tool-header">
+      <div class="edu-tool-logo-wrap">
+        <span class="edu-tool-emoji">🤖</span>
       </div>
-
-      <div class="edu-tool-card">
-        <div class="edu-tool-header">
-          <div class="edu-tool-logo-wrap">
-            <img src="https://www.sparxmaths.com/favicon.ico"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-              alt="Sparx" class="edu-tool-favicon" />
-            <span class="edu-tool-emoji" style="display:none;">📐</span>
-          </div>
-          <div>
-            <div class="edu-tool-name">Sparx Learning</div>
-            <div class="edu-tool-sub">Homework, practice & feedback</div>
-          </div>
-          <span class="edu-tool-tag">Homework & Practice</span>
-        </div>
-        <div class="edu-tool-body">
-          <p>Sparx uses AI to assign personalised practice tasks, ensuring students work at the right level and receive immediate, targeted feedback.</p>
-          <div class="edu-tool-cols">
-            <div class="edu-col">
-              <div class="edu-col-label">📅 When to use</div>
-              <ul class="lesson-list">
-                <li>Setting structured homework</li>
-                <li>Reinforcing class learning</li>
-                <li>Tracking student engagement</li>
-              </ul>
-            </div>
-            <div class="edu-col">
-              <div class="edu-col-label">✅ Why it's trusted</div>
-              <p class="edu-col-text">Widely used across UK schools, designed to support consistent practice while keeping teachers informed about student progress.</p>
-            </div>
-          </div>
-          <div class="edu-example">
-            <span class="edu-example-label">Example</span>
-            A maths teacher sets weekly homework through Sparx. Each student receives tailored questions, the platform provides instant feedback, and the teacher monitors completion and struggling areas.
-          </div>
-        </div>
+      <div>
+        <div class="edu-tool-name" id="lesson3-tool-header-1">Finding a tool for your subject...</div>
+        <div class="edu-tool-sub">Recommended for your subject</div>
       </div>
+      <span class="edu-tool-tag">Personalised Pick</span>
+    </div>
+    <div id="lesson3-tool-body-1">
+      <div class="edu-tool-body">
+        <p style="color: var(--muted); font-size: 14px;">Generating a personalised tool recommendation for your subject and year groups...</p>
+      </div>
+    </div>
+    <div class="edu-tool-body" style="padding-top:0;">
+      <a id="lesson3-tool-link-1" href="#" target="_blank" class="resource-link-btn" style="display:inline-block;">Visit Tool →</a>
+    </div>
+  </div>
 
-      <div class="edu-tool-card">
-        <div class="edu-tool-header">
-          <div class="edu-tool-logo-wrap">
-            <span class="edu-tool-emoji">🤖</span>
-          </div>
-          <div>
-            <div class="edu-tool-name" id="lesson3-tool-header">Finding a tool for your subject...</div>
-            <div class="edu-tool-sub">Recommended for your subject</div>
-          </div>
-          <span class="edu-tool-tag">Personalised Pick</span>
-        </div>
-        <div id="lesson3-tool-body">
-          <div class="edu-tool-body">
-            <p style="color: var(--muted); font-size: 14px;">Generating a personalised tool recommendation for your subject and year groups...</p>
-          </div>
-        </div>
-        <div class="edu-tool-body" style="padding-top:0;">
-          <a id="lesson3-tool-link" href="#" target="_blank" class="resource-link-btn" style="display:inline-block;">Visit Tool →</a>
-        </div>
-      </div>      
+  <div class="edu-tool-card">
+    <div class="edu-tool-header">
+      <div class="edu-tool-logo-wrap">
+        <span class="edu-tool-emoji">🤖</span>
+      </div>
+      <div>
+        <div class="edu-tool-name" id="lesson3-tool-header-2">Finding a tool for your subject...</div>
+        <div class="edu-tool-sub">Recommended for your subject</div>
+      </div>
+      <span class="edu-tool-tag">Personalised Pick</span>
+    </div>
+    <div id="lesson3-tool-body-2">
+      <div class="edu-tool-body">
+        <p style="color: var(--muted); font-size: 14px;">Generating a personalised tool recommendation for your subject and year groups...</p>
+      </div>
+    </div>
+    <div class="edu-tool-body" style="padding-top:0;">
+      <a id="lesson3-tool-link-2" href="#" target="_blank" class="resource-link-btn" style="display:inline-block;">Visit Tool →</a>
+    </div>
+  </div>
+
+</section>      
 
     <section class="lesson-section">
       <h3>Key Message for Teachers</h3>
@@ -788,11 +738,8 @@ function buildLearningPath() {
 
 // ── Open a specific lesson ──
 function openLesson(index) {
-  console.log('openLesson called with index:', index);
-  console.log('lessonState:', JSON.stringify(lessonState));
   currentLessonIndex = index;
   if (index === 3 && !lessonState[3].completed) {
-    console.log('going to quiz');
     buildLesson4Quiz();
     showScreen('screen-lesson4-quiz');
   } else {
@@ -1165,10 +1112,10 @@ async function generatePersonalisedTool() {
   const subject = getSubjectName();
   const yearGroups = getYearGroups();
 
-  const prompt = 'You are helping build an EdTech resource page for a UK teacher. The teacher teaches ' + subject + ' to ' + yearGroups + '. ' +
+  const makePrompt = (exclude) => 'You are helping build an EdTech resource page for a UK teacher. The teacher teaches ' + subject + ' to ' + yearGroups + '. ' +
     'Find and describe ONE real, existing AI-powered education tool that is specifically useful for ' + subject + ' teachers teaching ' + yearGroups + '. ' +
     'The tool must: be a real product that exists and has a working website, align with UK government and DfE guidance on AI in education, be appropriate for ' + yearGroups + ', and ideally be used in UK schools. ' +
-    'Do not suggest ChatGPT, Gemini, Claude, Copilot, Oak National Academy or Sparx Learning, as these are already featured. ' +
+    'Do not suggest ChatGPT, Gemini, Claude, Copilot,' + (exclude ? ', ' + exclude + '. You MUST suggest a completely different tool to ' + exclude + ' — do not suggest the same tool under a different name' : '') + ' as these are already featured. ' +
     'Format your response as clean HTML using ONLY these CSS classes: edu-tool-body, edu-tool-cols, edu-col, edu-col-label, lesson-list, edu-example, edu-example-label. ' +
     'Follow this exact structure: ' +
     '<div class="edu-tool-body">' +
@@ -1182,56 +1129,71 @@ async function generatePersonalisedTool() {
     'Before the div, output the tool name and website URL in this exact format on the first line only: TOOLNAME|||TOOLURL ' +
     'Then on the next line start the HTML. Do not include any explanation, markdown, or backticks.';
 
-  try {
-    const response = await fetch('https://orange-frost-909d.ryan-trancas.workers.dev', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt: prompt })
-    });
-    const data = await response.json();
-    if (!data.candidates || !data.candidates[0]) return;
+  const parseAndPopulate = async (prompt, headerIds, bodyIds, linkIds) => {
+    try {
+      const response = await fetch('https://orange-frost-909d.ryan-trancas.workers.dev', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: prompt })
+      });
+      const data = await response.json();
+      if (!data.candidates || !data.candidates[0]) return null;
 
-    let raw = data.candidates[0].content.parts[0].text;
-    raw = raw.split('```html').join('').split('```').join('').trim();
+      let raw = data.candidates[0].content.parts[0].text;
+      raw = raw.split('```html').join('').split('```').join('').trim();
 
-    const lines = raw.split('\n');
-    const firstLine = lines[0];
-    const htmlContent = lines.slice(1).join('\n').trim();
+      const firstLineEnd = raw.indexOf('\n');
+      const firstLine = firstLineEnd !== -1 ? raw.substring(0, firstLineEnd).trim() : '';
+      const htmlContent = firstLineEnd !== -1 ? raw.substring(firstLineEnd + 1).trim() : raw;
 
-    let toolName = 'AI Tool for ' + subject;
-    let toolUrl = '#';
+      let toolName = 'AI Tool for ' + subject;
+      let toolUrl = '#';
 
-    if (firstLine.includes('|||')) {
-      const parts = firstLine.split('|||');
-      toolName = parts[0].trim();
-      toolUrl = parts[1].trim();
+      if (firstLine.includes('|||')) {
+        const parts = firstLine.split('|||');
+        toolName = parts[0].trim();
+        toolUrl = parts[1].trim();
+      }
+
+      headerIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.textContent = toolName;
+      });
+      bodyIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) el.innerHTML = htmlContent;
+      });
+      linkIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) { el.href = toolUrl; el.textContent = 'Visit ' + toolName + ' →'; }
+      });
+
+      return toolName;
+    } catch (error) {
+      console.error('Personalised tool error:', error);
+      return null;
     }
+  };
 
-    const header = document.getElementById('personalised-tool-header');
-    const body = document.getElementById('personalised-tool-body');
-    const link = document.getElementById('personalised-tool-link');
+  const tool1Name = await parseAndPopulate(
+    makePrompt(null),
+    ['lesson3-tool-header-1', 'personalised-tool-header'],
+    ['lesson3-tool-body-1', 'personalised-tool-body'],
+    ['lesson3-tool-link-1', 'personalised-tool-link']
+  );
 
-    if (header) header.textContent = toolName;
-    if (body) body.innerHTML = htmlContent;
-    if (link) {
-      link.href = toolUrl;
-      link.textContent = 'Visit ' + toolName + ' →';
-    }
+  console.log('Tool 1 generated:', tool1Name);
 
-    const header3 = document.getElementById('lesson3-tool-header');
-    const body3 = document.getElementById('lesson3-tool-body');
-    const link3 = document.getElementById('lesson3-tool-link');
+  const excludeList = tool1Name && tool1Name !== 'AI Tool for ' + getSubjectName() 
+    ? tool1Name 
+    : 'any tool already suggested';
 
-    if (header3) header3.textContent = toolName;
-    if (body3) body3.innerHTML = htmlContent;
-    if (link3) {
-      link3.href = toolUrl;
-      link3.textContent = 'Visit ' + toolName + ' →';
-    }
-
-  } catch (error) {
-    console.error('Personalised tool error:', error);
-  }
+  await parseAndPopulate(
+    makePrompt(excludeList),
+    ['lesson3-tool-header-2', 'personalised-tool-header-2'],
+    ['lesson3-tool-body-2', 'personalised-tool-body-2'],
+    ['lesson3-tool-link-2', 'personalised-tool-link-2']
+  );
 }
 
 function showCertificate() {
@@ -1263,20 +1225,27 @@ function handlePolicyUpload(input) {
 }
 
 function populateLesson3Tool() {
-  const header = document.getElementById('lesson3-tool-header');
-  const body = document.getElementById('lesson3-tool-body');
-  const link = document.getElementById('lesson3-tool-link');
+  const pairs = [
+    ['lesson3-tool-header-1', 'personalised-tool-header'],
+    ['lesson3-tool-body-1', 'personalised-tool-body'],
+    ['lesson3-tool-link-1', 'personalised-tool-link'],
+    ['lesson3-tool-header-2', 'personalised-tool-header-2'],
+    ['lesson3-tool-body-2', 'personalised-tool-body-2'],
+    ['lesson3-tool-link-2', 'personalised-tool-link-2']
+  ];
 
-  const resourceHeader = document.getElementById('personalised-tool-header');
-  const resourceBody = document.getElementById('personalised-tool-body');
-  const resourceLink = document.getElementById('personalised-tool-link');
-
-  if (header && resourceHeader) header.textContent = resourceHeader.textContent;
-  if (body && resourceBody) body.innerHTML = resourceBody.innerHTML;
-  if (link && resourceLink) {
-    link.href = resourceLink.href;
-    link.textContent = resourceLink.textContent;
-  }
+  pairs.forEach(([lessonId, resourceId]) => {
+    const lessonEl = document.getElementById(lessonId);
+    const resourceEl = document.getElementById(resourceId);
+    if (lessonEl && resourceEl) {
+      if (lessonId.includes('header')) lessonEl.textContent = resourceEl.textContent;
+      else if (lessonId.includes('body')) lessonEl.innerHTML = resourceEl.innerHTML;
+      else if (lessonId.includes('link')) {
+        lessonEl.href = resourceEl.href;
+        lessonEl.textContent = resourceEl.textContent;
+      }
+    }
+  });
 }
 
 function selectModuleQuiz(questionIndex, answerIndex) {
