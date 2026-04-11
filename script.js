@@ -87,7 +87,7 @@ const lesson4Quiz = [
 // ── 8 Lessons for Module 1 ──
 const lessons = [
 {
-  title: "1.1 — What is Artificial Intelligence?",
+  title: "1.1 - What is Artificial Intelligence?",
   body: `
     <section class="lesson-section">
 
@@ -148,7 +148,7 @@ const lessons = [
       <div class="two-col">
         <div class="info-card">
           <div class="info-card-title">"Large"</div>
-          <p style="font-size:14px; color:#475569; margin:0;">It is trained on vast amounts of text data — books, websites, articles, and other written sources.</p>
+          <p style="font-size:14px; color:#475569; margin:0;">It is trained on vast amounts of text data - books, websites, articles, and other written sources.</p>
         </div>
         <div class="info-card">
           <div class="info-card-title">"Language Model"</div>
@@ -197,7 +197,7 @@ const lessons = [
           <div class="stage-number">3</div>
           <div class="stage-content">
             <div class="stage-title">Generating a Response</div>
-            <p>The AI generates a response by predicting the most likely next word, repeating this process word by word, and building a full response based on probabilities — extremely quickly, creating responses that feel natural and coherent.</p>
+            <p>The AI generates a response by predicting the most likely next word, repeating this process word by word, and building a full response based on probabilities - extremely quickly, creating responses that feel natural and coherent.</p>
           </div>
         </div>
 
@@ -242,7 +242,7 @@ const lessons = [
       <h3>Explaining AI to Students</h3>
       <div class="analogy-box">
         <div class="analogy-quote">💬 "AI is like super-powered predictive text"</div>
-        <p>AI works in a similar way to the predictive text on your phone — but much more advanced. When you start typing a message, your phone suggests the next word based on what you've written before. AI does the same thing, but:</p>
+        <p>AI works in a similar way to the predictive text on your phone - but much more advanced. When you start typing a message, your phone suggests the next word based on what you've written before. AI does the same thing, but:</p>
         <ul class="lesson-list">
           <li>It has been trained on billions of examples of text</li>
           <li>It can generate full sentences, paragraphs, or even essays</li>
@@ -301,7 +301,7 @@ const lessons = [
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Bing_Fluent_Logo.svg" alt="Copilot" class="ai-logo" />
             Copilot
           </div>
-          <div>Integrates with Word, Excel, Outlook and Teams — useful where Microsoft 365 is already in use</div>
+          <div>Integrates with Word, Excel, Outlook and Teams - useful where Microsoft 365 is already in use</div>
         </div>
       </div>
 </section>
@@ -314,7 +314,7 @@ const lessons = [
 
 <section class="lesson-section">
   <h3>Education-Specific AI Tools for Your Subject</h3>
-  <p>The following tools have been selected specifically for your subject and year groups. Unlike general AI tools, they are designed with education in mind — aligned to the curriculum, built with safeguarding considerations, and trusted across UK classrooms.</p>
+  <p>The following tools have been selected specifically for your subject and year groups. Unlike general AI tools, they are designed with education in mind - aligned to the curriculum, built with safeguarding considerations, and trusted across UK classrooms.</p>
 
   <div class="edu-tool-card">
     <div class="edu-tool-header">
@@ -374,14 +374,14 @@ const lessons = [
         </div>
       </div>
       <div class="info-box" style="margin-top: 20px;">
-        👉 Crucially, these tools are designed to <strong>support — not replace</strong> — teacher expertise, ensuring that professional judgement remains at the centre of the classroom.
+        👉 Crucially, these tools are designed to <strong>support - not replace</strong> - teacher expertise, ensuring that professional judgement remains at the centre of the classroom.
       </div>
     </section>
 
     <section class="lesson-section">
       <div class="resources-gov-banner">
         <div class="resources-gov-title">📋 UK Government Guidance on AI in Education</div>
-        <div class="resources-gov-body">The Department for Education has published guidance on the use of generative AI in education. All tools featured in this lesson have been selected with this guidance in mind — prioritising teacher oversight, data safety, and responsible use.</div>
+        <div class="resources-gov-body">The Department for Education has published guidance on the use of generative AI in education. All tools featured in this lesson have been selected with this guidance in mind - prioritising teacher oversight, data safety, and responsible use.</div>
         <a href="https://www.gov.uk/government/publications/generative-artificial-intelligence-in-education" target="_blank" class="resource-link-btn" style="display:inline-block; margin-top: 14px;">Read the DfE Guidance →</a>
       </div>
     </section>
@@ -470,7 +470,7 @@ const lessons = [
         <div class="principle-card">
           <div class="principle-icon">🧑‍🏫</div>
           <div class="principle-title">Keep Humans in Charge</div>
-          <div class="principle-body">Professional judgement comes first. AI supports your decisions — it does not make them.</div>
+          <div class="principle-body">Professional judgement comes first. AI supports your decisions - it does not make them.</div>
         </div>
       </div>
     </section>
@@ -822,7 +822,7 @@ function showLesson4Results(correct) {
       <div style="text-align: center; padding: 20px 0;">
         <div style="font-size: 56px; margin-bottom: 20px;">🎉</div>
         <h2 class="question-title">You scored ${correct} out of 6!</h2>
-        <p class="question-sub">Well done — you have a good understanding of this content, so you have skipped the lesson on Common Misconceptions.</p>
+        <p class="question-sub">Well done - you have a good understanding of this content, so you have skipped the lesson on Common Misconceptions.</p>
         ${incorrectHTML}
         <button class="primary-btn" style="margin-top: 24px;" onclick="lesson4Skip()">Continue →</button>
       </div>
@@ -1287,7 +1287,7 @@ function showModuleQuizResults() {
       <div style="background:#f0fdf4; border:1.5px solid #bbf7d0; border-radius:12px; padding:20px 24px; text-align:center;">
         <div style="font-size:40px; margin-bottom:12px;">🎉</div>
         <h3 style="font-family:'DM Serif Display',serif; font-size:20px; color:#15803d; margin-bottom:8px;">You passed! ${correct} out of 3 correct</h3>
-        <p style="font-size:14px; color:#475569; margin-bottom:16px;">Well done — you've demonstrated a solid understanding of the foundations of AI. Your certificate is ready.</p>
+        <p style="font-size:14px; color:#475569; margin-bottom:16px;">Well done - you've demonstrated a solid understanding of the foundations of AI. Your certificate is ready.</p>
         <button class="primary-btn" style="background:#15803d;" onclick="finishModule1()">Claim Your Certificate →</button>
       </div>
     `;
