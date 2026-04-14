@@ -2837,6 +2837,22 @@ body {
     font-size: 12px;
     padding: 12px 14px;
   }
+
+  /* ── Navbar full width ── */
+  .navbar {
+    width: 100vw;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  /* ── Push content down to account for fixed navbar ── */
+  .layout {
+    padding-top: 57px;
+  }
+    
 }
 
 @media (max-width: 768px) {
