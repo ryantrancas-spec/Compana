@@ -2474,6 +2474,7 @@ body {
     bottom: 0;
     left: 0;
     right: 0;
+    width: 100vw;
     background: #ffffff;
     border-top: 1px solid var(--border);
     z-index: 200;
@@ -2851,6 +2852,40 @@ body {
   /* ── Push content down to account for fixed navbar ── */
   .layout {
     padding-top: 57px;
+  }
+
+  .home-layout {
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  .home-elearning-card {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .home-module-row {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .home-module-badge {
+    font-size: 10px;
+    padding: 3px 8px;
+    white-space: normal;
+    text-align: center;
+  }
+
+  .home-sidebar-col {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .home-widget {
+    width: 100%;
+    box-sizing: border-box;
   }
     
 }
