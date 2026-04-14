@@ -994,5 +994,33 @@
     }
   </script>
 
+<!-- Mobile Bottom Nav -->
+<nav class="mobile-bottom-nav">
+  <div class="mobile-nav-item active" onclick="activateMobileNav(this); activateSidebarItem(0); showScreen('screen-home')">
+    <span class="mobile-nav-icon">🏠</span>
+    <span class="mobile-nav-label">Home</span>
+  </div>
+  <div class="mobile-nav-item" onclick="activateMobileNav(this); goToElearning()">
+    <span class="mobile-nav-icon">🎓</span>
+    <span class="mobile-nav-label">Learn</span>
+  </div>
+  <div class="mobile-nav-item" onclick="activateMobileNav(this); activateSidebarItem(2); showScreen('screen-community')">
+    <span class="mobile-nav-icon">👥</span>
+    <span class="mobile-nav-label">Community</span>
+  </div>
+  <div class="mobile-nav-item" onclick="activateMobileNav(this); activateSidebarItem(3); showScreen('screen-resources')">
+    <span class="mobile-nav-icon">📚</span>
+    <span class="mobile-nav-label">Resources</span>
+  </div>
+  <div class="mobile-nav-item" onclick="activateMobileNav(this); activateSidebarItem(4); showScreen('screen-manager')">
+    <span class="mobile-nav-icon">📊</span>
+    <span class="mobile-nav-label">Dashboard</span>
+  </div>
+  <div class="mobile-nav-item" onclick="activateMobileNav(this); activateSidebarItem(5); showScreen('screen-contact')">
+    <span class="mobile-nav-icon">✉️</span>
+    <span class="mobile-nav-label">Contact</span>
+  </div>
+</nav>
+    
 </body>
 </html>

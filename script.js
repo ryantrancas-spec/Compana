@@ -1325,3 +1325,10 @@ function retryModuleQuiz() {
   document.getElementById('mq-feedback').style.display = 'none';
   window.scrollTo(0, 0);
 }
+
+function activateMobileNav(el) {
+  document.querySelectorAll('.mobile-nav-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  el.classList.add('active');
+}
