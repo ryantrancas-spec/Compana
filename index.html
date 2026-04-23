@@ -54,150 +54,68 @@
 
     <!-- MAIN CONTENT -->
 <div class="main-content" id="main-content">
- <!-- SCREEN: Home -->
+<!-- SCREEN: Home -->
 <div class="screen active" id="screen-home">
-  <div class="home-layout">
+  <div class="home-new-layout">
 
-    <!-- E-Learning Hero (left/main) -->
-    <div class="home-main">
-      <div class="home-policy-card" onclick="openPolicyModal()">
-        <div class="home-policy-left">
-          <span class="home-policy-icon">📋</span>
-          <div>
-            <div class="home-policy-title">Upload Your School's AI Policy</div>
-            <div class="home-policy-sub">* For senior teachers - Get course content and recommendations for your teachers tailored to your school's specific AI guidelines - simply upload your policy document to get started.</div>
-          </div>
-        </div>
-        <button class="home-policy-btn" onclick="openPolicyModal()">Upload Policy →</button>
-      </div>
-      <div class="home-elearning-card">
-        <div class="home-elearning-top">
-          <div class="welcome-badge" style="margin-bottom: 16px;">Education For Educators</div>
-          <h1 class="welcome-title" style="text-align:left; font-size:34px;">Welcome to Compana</h1>
-          <p style="font-size:15px; color:var(--muted); line-height:1.75; margin: 12px 0 24px;">A personalised AI literacy programme for UK teachers. Using a diagnostic to assess your understanding, Compana delivers tailored, bite-sized lessons so you can confidently use and guide AI in the classroom.</p>
-          <button class="primary-btn" id="home-start-btn" onclick="startOrResumeLearning()">Start Your Learning Path →</button>
-          <p class="trust-note" style="text-align:left; margin-top:16px;">✦ No data stored &nbsp;·&nbsp; ✦ No sign-up needed &nbsp;·&nbsp; ✦ Skips content you already know</p>
-        </div>
-        <div class="home-modules-preview">
-          <div class="home-modules-label">Your Modules</div>
-          <div class="home-module-row home-module-unlocked">
-            <div class="home-module-num">01</div>
-            <div class="home-module-name">Understanding the Foundations of AI</div>
-            <span class="home-module-badge badge-open">Click Start Your Learning Path to begin</span>
-          </div>
-          <div class="home-module-row">
-            <div class="home-module-num">02</div>
-            <div class="home-module-name">The Benefits, Risks &amp; Limitations of AI</div>
-            <span class="home-module-badge badge-locked">🔒</span>
-          </div>
-          <div class="home-module-row">
-            <div class="home-module-num">03</div>
-            <div class="home-module-name">Prompts &amp; Outputs</div>
-            <span class="home-module-badge badge-locked">🔒</span>
-          </div>
-          <div class="home-module-row">
-            <div class="home-module-num">04</div>
-            <div class="home-module-name">Academic Integrity &amp; Ethics</div>
-            <span class="home-module-badge badge-locked">🔒</span>
-          </div>
-          <div class="home-module-row">
-            <div class="home-module-num">05</div>
-            <div class="home-module-name">Integrating AI into Your Teaching</div>
-            <span class="home-module-badge badge-locked">🔒</span>
-          </div>
-          <div class="home-module-row">
-            <div class="home-module-num">06</div>
-            <div class="home-module-name">How Students Can Safely Use AI</div>
-            <span class="home-module-badge badge-locked">🔒</span>
-          </div>
-          <div class="home-module-row">
-            <div class="home-module-num">07</div>
-            <div class="home-module-name">Navigating Future AI Evolution</div>
-            <span class="home-module-badge badge-locked">🔒</span>
-          </div>
-        </div>
-      </div>
+    <!-- Hero Section -->
+    <div class="home-hero">
+      <div class="home-prototype-badge">🔧 Prototype</div>
+      <h1 class="home-hero-title">Welcome to Compana</h1>
+      <p class="home-hero-sub">A personalised training tool to support teachers in the age of AI</p>
+      <button class="home-hero-btn" id="home-start-btn" onclick="startOrResumeLearning()">Start Your Learning Path →</button>
+      <p class="trust-note" style="margin-top: 16px; text-align:center;">✦ No sign-up needed &nbsp;·&nbsp; ✦ No data stored &nbsp;·&nbsp; ✦ Skips content you already know</p>
     </div>
 
-    <!-- Right column -->
-    <div class="home-sidebar-col">
+    <!-- Feature Cards -->
+    <div class="home-features-grid">
 
-      <!-- Community preview -->
-      <div class="home-widget" onclick="activateSidebarItem(2); showScreen('screen-community')" style="cursor:pointer;">
-        <div class="home-widget-header">
-          <span class="home-widget-icon">👥</span>
-          <span class="home-widget-title">Community</span>
-          <span class="home-widget-link">View all →</span>
-        </div>
-        <p class="home-widget-sub">"Together, we go further - every question asked helps every teacher learn."</p>
-        <div class="home-community-thread">
-          <div class="home-thread-avatar">SR</div>
-          <div>
-            <div class="home-thread-name">Sarah R. <span style="color:var(--muted); font-weight:400;">· St. Cuthbert's Secondary</span></div>
-            <div class="home-thread-body">My Year 10s keep using ChatGPT to write their essays entirely - has anyone found a good approach?</div>
-          </div>
-        </div>
-        <div class="home-community-thread">
-          <div class="home-thread-avatar">JO</div>
-          <div>
-            <div class="home-thread-name">James O. <span style="color:var(--muted); font-weight:400;">· Northgate Sixth Form</span></div>
-            <div class="home-thread-body">Tip: I use AI to generate multiple perspectives on events as discussion starters - students love fact-checking it.</div>
-          </div>
-        </div>
+      <div class="home-feature-card home-feature-primary" onclick="startOrResumeLearning()">
+        <div class="home-feature-icon">🎓</div>
+        <div class="home-feature-title">AI Literacy Mirco-Course</div>
+        <div class="home-feature-desc">7 modules of bite-sized lessons personalised to your subject and year groups</div>
+        <div class="home-feature-arrow">→</div>
       </div>
 
-      <!-- Resources preview -->
-      <div class="home-widget" onclick="activateSidebarItem(3); showScreen('screen-resources')" style="cursor:pointer;">
-        <div class="home-widget-header">
-          <span class="home-widget-icon">📚</span>
-          <span class="home-widget-title">Resources</span>
-          <span class="home-widget-link">View all →</span>
-        </div>
-        <p class="home-widget-sub">Trusted AI tools reviewed against UK government and school policy.</p>
-        <div class="home-resource-row">
-          <div class="home-resource-dot dot-green"></div>
-          <div class="home-resource-name">Oak National Academy - Aila</div>
-          <span class="home-resource-tag">Free</span>
-        </div>
-        <div class="home-resource-row">
-          <div class="home-resource-dot dot-green"></div>
-          <div class="home-resource-name">Sparx Learning</div>
-          <span class="home-resource-tag">School-provided</span>
-        </div>
-        <div class="home-resource-row">
-          <div class="home-resource-dot dot-green"></div>
-          <div class="home-resource-name">Tassomai</div>
-          <span class="home-resource-tag">School-provided</span>
-        </div>
+      <div class="home-feature-card" onclick="openPolicyModal()">
+        <div class="home-feature-icon">📋</div>
+        <div class="home-feature-title">Upload Your School's AI Policy</div>
+        <div class="home-feature-desc">Upload your school's AI policy to personalise the experience for your staff. If you do not have one yet we have a structured template to aid creation.</div>
+        <div class="home-feature-arrow">→</div>
+      </div>
+        
+      <div class="home-feature-card" onclick="activateMobileNav(document.querySelectorAll('.mobile-nav-item')[2]); activateSidebarItem(2); showScreen('screen-community')">
+        <div class="home-feature-icon">👥</div>
+        <div class="home-feature-title">Community</div>
+        <div class="home-feature-desc">Connect with teachers and get support from the Compana team</div>
+        <div class="home-feature-arrow">→</div>
       </div>
 
-      <!-- Manager dashboard preview -->
-      <div class="home-widget" onclick="activateSidebarItem(4); showScreen('screen-manager')" style="cursor:pointer;">
-        <div class="home-widget-header">
-          <span class="home-widget-icon">📊</span>
-          <span class="home-widget-title">Manager Dashboard</span>
-          <span class="home-widget-link">View all →</span>
-        </div>
-        <p class="home-widget-sub">Track staff progress across all modules and lessons.</p>
-        <div class="home-dash-stats">
-          <div class="home-dash-stat">
-            <div class="home-dash-value">24</div>
-            <div class="home-dash-label">Active teachers</div>
-          </div>
-          <div class="home-dash-stat">
-            <div class="home-dash-value">17</div>
-            <div class="home-dash-label">Module 1 done</div>
-          </div>
-          <div class="home-dash-stat">
-            <div class="home-dash-value">8.4m</div>
-            <div class="home-dash-label">Avg. per lesson</div>
-          </div>
-        </div>
+      <div class="home-feature-card" onclick="activateMobileNav(document.querySelectorAll('.mobile-nav-item')[3]); activateSidebarItem(3); showScreen('screen-resources')">
+        <div class="home-feature-icon">📚</div>
+        <div class="home-feature-title">Resources</div>
+        <div class="home-feature-desc">Trusted AI tools reviewed against UK government and school policy</div>
+        <div class="home-feature-arrow">→</div>
       </div>
 
-    </div><!-- end home-sidebar-col -->
-  </div><!-- end home-layout -->
-</div><!-- end screen-home -->
+      <div class="home-feature-card" onclick="activateMobileNav(document.querySelectorAll('.mobile-nav-item')[4]); activateSidebarItem(4); showScreen('screen-manager')">
+        <div class="home-feature-icon">📊</div>
+        <div class="home-feature-title">Manager Dashboard</div>
+        <div class="home-feature-desc">Track your staff's progress and engagement across all modules</div>
+        <div class="home-feature-arrow">→</div>
+      </div>
+
+      <div class="home-feature-card" onclick="activateMobileNav(document.querySelectorAll('.mobile-nav-item')[5]); activateSidebarItem(5); showScreen('screen-contact')">
+        <div class="home-feature-icon">✉️</div>
+        <div class="home-feature-title">Contact Us</div>
+        <div class="home-feature-desc">Get in touch with the Compana team with feedback or questions</div>
+        <div class="home-feature-arrow">→</div>
+      </div>
+
+    </div>
+
+  </div>
+</div> <!--End of Home Screen -->
 
       <!-- SCREEN 2: Question 1 -->
       <div class="screen" id="screen-q1">
@@ -245,41 +163,43 @@
             <div class="progress-track"><div class="progress-fill" style="width:50%"></div></div>
           </div>
           <div class="question-chip">A short diagnostic to help us craft your ideal learning path</div>
-          <h2 class="question-title">What subject do you teach?</h2>
-          <div class="options-stack" id="q3-options">
-            <button class="option-btn" onclick="selectOption('q3', 0, 'screen-q4')">Maths</button>
-            <button class="option-btn" onclick="selectOption('q3', 1, 'screen-q4')">English</button>
-            <button class="option-btn" onclick="selectOption('q3', 2, 'screen-q4')">Science</button>
-            <button class="option-btn" onclick="selectOption('q3', 3, 'screen-q4')">Geography</button>
-            <button class="option-btn" onclick="selectOption('q3', 4, 'screen-q4')">History</button>
-            <button class="option-btn" onclick="selectOption('q3', 5, 'screen-q4')">Religious Studies</button>
-            <button class="option-btn" onclick="selectOption('q3', 6, 'screen-q4')">Business Studies</button>
-            <button class="option-btn" onclick="selectOption('q3', 7, 'screen-q4')">Spanish</button>
-            <button class="option-btn" onclick="selectOption('q3', 8, 'screen-q4')">French</button>
-            <button class="option-btn" onclick="selectOption('q3', 9, 'screen-q4')">Computer Science</button>
-            <button class="option-btn" onclick="selectOption('q3', 10, 'screen-q4')">Art</button>
-          </div>
-        </div>
-      </div>
+<h2 class="question-title">What subject do you teach?</h2>
+<h3 class="question-subtitle">Select all that apply</h3>
+<div class="options-stack" id="q3-options">
+  <div class="option-btn" onclick="toggleQ3Option(this, 0)">Maths</div>
+  <div class="option-btn" onclick="toggleQ3Option(this, 1)">English</div>
+  <div class="option-btn" onclick="toggleQ3Option(this, 2)">Science</div>
+  <div class="option-btn" onclick="toggleQ3Option(this, 3)">Geography</div>
+  <div class="option-btn" onclick="toggleQ3Option(this, 4)">History</div>
+  <div class="option-btn" onclick="toggleQ3Option(this, 5)">Religious Studies</div>
+  <div class="option-btn" onclick="toggleQ3Option(this, 6)">Business Studies</div>
+  <div class="option-btn" onclick="toggleQ3Option(this, 7)">Spanish</div>
+  <div class="option-btn" onclick="toggleQ3Option(this, 8)">French</div>
+  <div class="option-btn" onclick="toggleQ3Option(this, 9)">Computer Science</div>
+  <div class="option-btn" onclick="toggleQ3Option(this, 10)">Art</div>
+</div>
+<div class="nav-btns" style="margin-top: 24px;">
+  <button class="primary-btn" id="q3-continue-btn" onclick="submitQ3()" disabled>Continue →</button>
+</div>
 
-      <!-- SCREEN 5: Question 4 -->
-      <div class="screen" id="screen-q4">
-        <div class="container">
-          <div class="progress-wrap">
-            <div class="progress-labels"><span>Question 4 of 5</span><span>60%</span></div>
-            <div class="progress-track"><div class="progress-fill" style="width:75%"></div></div>
-          </div>
-          <div class="question-chip">A short diagnostic to help us craft your ideal learning path</div>
-          <h2 class="question-title">You ask an AI chatbot to explain a historical event. The AI produces a clear and confident explanation. What is the most likely reason the AI produced that response?</h2>
-          <div class="options-stack" id="q4-options">
-<button class="option-btn" onclick="selectOption('q4', 0, 'screen-q5')">The AI searched the internet and found the correct information</button>
-<button class="option-btn" onclick="selectOption('q4', 1, 'screen-q5')">The AI understands the topic and explains it like a teacher would</button>
-<button class="option-btn" onclick="selectOption('q4', 2, 'screen-q5')">The AI generated the response by predicting likely words based on patterns in its training data</button>
-<button class="option-btn" onclick="selectOption('q4', 3, 'screen-q5')">The AI retrieved the answer from a database of stored facts</button>
-<button class="option-btn" onclick="selectOption('q4', 4, 'screen-q5')">I'm not sure</button>
-          </div>
-        </div>
-      </div>
+<!-- SCREEN 5: Question 4 -->
+<div class="screen" id="screen-q4">
+  <div class="container">
+    <div class="progress-wrap">
+      <div class="progress-labels"><span>Question 4 of 5</span><span>60%</span></div>
+      <div class="progress-track"><div class="progress-fill" style="width:75%"></div></div>
+    </div>
+    <div class="question-chip">A short diagnostic to help us craft your ideal learning path</div>
+    <h2 class="question-title">When an AI chatbot gives you an answer, what is it actually doing?</h2>
+    <div class="options-stack" id="q4-options">
+      <button class="option-btn" onclick="selectOption('q4', 0, 'screen-q5')">Searching the internet</button>
+      <button class="option-btn" onclick="selectOption('q4', 1, 'screen-q5')">Predicting the most likely next words based on its training</button>
+      <button class="option-btn" onclick="selectOption('q4', 2, 'screen-q5')">Looking up a stored fact</button>
+      <button class="option-btn" onclick="selectOption('q4', 3, 'screen-q5')">Thinking and reasoning like a person</button>
+      <button class="option-btn" onclick="selectOption('q4', 4, 'screen-q5')">I'm not sure</button>
+    </div>
+  </div>
+</div>
 
 <!-- SCREEN 5: Question 5 -->
 <div class="screen" id="screen-q5">
@@ -415,7 +335,7 @@
 <!-- SCREEN: Community -->
 <div class="screen" id="screen-community">
   <div class="container">
-    <h1 class="question-title">Community Chat</h2>
+    <h1 class="question-title">Community Chat - Prototype</h2>
     <p class="question-sub">A shared space where teachers can support each other, share experiences, and receive additional support from the Compana team. We also value any teacher feedback to ensure our user experience is as best as possible and hits all teacher wants and needs.</p>
 
     <div class="community-threads">
@@ -531,7 +451,7 @@
 <!-- SCREEN: Resources -->
 <div class="screen" id="screen-resources">
   <div class="container">
-    <h1 class="question-title">Resources</h1>
+    <h1 class="question-title">Resources - Prototype</h1>
     <p class="question-sub">A curated set of trusted AI tools for UK teachers. Every tool listed here has been reviewed against UK government guidance on AI in education and is suitable for use within your school's AI policy.</p>
 
  <div class="resources-compliance-banner">
@@ -727,7 +647,7 @@
 <!-- SCREEN: Manager Dashboard -->
 <div class="screen" id="screen-manager">
   <div class="container">
-    <h2 class="question-title">Manager Dashboard</h2>
+    <h2 class="question-title">Manager Dashboard - Prototype</h2>
     <p class="question-sub">Track your staff's progress through our microcourse across all modules and lessons - we will keep track of and share which lessons & modules teachers have completed, how long they spent on these, and when their most recent log in was.</p>
 
     <div class="dash-stats">

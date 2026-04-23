@@ -3,13 +3,14 @@
 let answerQ1 = [];
 let answerQ2 = [];
 let answerQ2Groups = [];
-let answerQ3 = null;
+let answerQ3 = [];
 let answerQ4 = null;
 let answerQ5 = null;
 
 function getSubjectName() {
   const subjects = ["Maths", "English", "Science", "Geography", "History", "Religious Studies", "Business Studies", "Spanish", "French", "Computer Science", "Art", "Latin", "Music", "Physical Education"];
-  return subjects[answerQ3] || "Your Subject";
+  if (!answerQ3 || answerQ3.length === 0) return "Your Subject";
+  return answerQ3.map(i => subjects[i]).join(' and ');
 }
 
 function getSchoolType() {
@@ -514,6 +515,21 @@ function submitQ2() {
   showScreen('screen-q3');
 }
 
+function toggleQ3Option(el, index) {
+  el.classList.toggle('selected');
+  if (el.classList.contains('selected')) {
+    if (!answerQ3.includes(index)) answerQ3.push(index);
+  } else {
+    answerQ3 = answerQ3.filter(i => i !== index);
+  }
+  document.getElementById('q3-continue-btn').disabled = answerQ3.length === 0;
+}
+
+function submitQ3() {
+  if (answerQ3.length === 0) return;
+  showScreen('screen-q4');
+}
+
 // ── Show a screen ──
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -556,12 +572,20 @@ function showScreen(id) {
       }
     });
   }
+
+  if (id === 'screen-q3') {
+    document.addEventListener('keydown', function q3Enter(e) {
+      if (e.key === 'Enter') {
+        document.removeEventListener('keydown', q3Enter);
+        submitQ3();
+      }
+    });
+  }
 }
 
 // ── Select a multiple choice answer ──
 function selectOption(questionId, optionIndex, nextScreen) {
   if (questionId === 'q1') answerQ1 = optionIndex;
-  if (questionId === 'q3') answerQ3 = optionIndex;
   if (questionId === 'q4') answerQ4 = optionIndex;
   if (questionId === 'q5') answerQ5 = optionIndex;
 
@@ -960,7 +984,7 @@ function restart() {
   answerQ1 = [];
   answerQ2 = [];
   answerQ2Groups = [];
-  answerQ3 = null;
+  answerQ3 = [];
   answerQ4 = null;
   answerQ5 = null;
   lessonState = [];
@@ -1001,7 +1025,7 @@ async function generatePersonalisedLesson(retryCount = 0) {
 
 const schoolType = getSchoolType();
 
-const prompt = `You are an instructional designer creating content for a teacher CPD platform about AI in education. The teacher teaches ${subject} to the following year groups: ${getYearGroups()}. Make the content difficulty level and examples specific to these year groups. If they teach more than one year group do not increase content from what is asked of you below, instead split the content equally between these year groups. So for example, you could have one example for one year, then an example for another. If you include a prompt example then have 'Prompt Example' in the heading of that section. Also have the prompt itself in bold.
+const prompt = `You are an instructional designer creating content for a teacher CPD platform about AI in education. The teacher teaches ${subject} to the following year groups: ${getYearGroups()}. If multiple subjects are listed, split the content equally between them — for example include one way AI helps per subject, one example per subject. Make the content difficulty level and examples specific to these year groups. If they teach more than one year group do not increase content from what is asked of you below, instead split the content equally between these year groups. So for example, you could have one example for one year, then an example for another. If you include a prompt example then have 'Prompt Example' in the heading of that section. Also have the prompt itself in bold.
 
 IMPORTANT: You must write a FULL, DETAILED lesson with multiple sections. A short response is not acceptable. Aim for 400 - 600 words of content.
 
@@ -1062,7 +1086,7 @@ function goToElearning() {
     showScreen('screen-modules');
   } else if (answerQ4 !== null) {
     showScreen('screen-q5');
-  } else if (answerQ3 !== null) {
+  } else if (answerQ3 && answerQ3.length > 0) {
     showScreen('screen-q4');
   } else if (answerQ2.length > 0) {
     showScreen('screen-q3');
@@ -1081,7 +1105,7 @@ async function generateLesson2Example() {
   const subject = getSubjectName();
   const yearGroups = getYearGroups();
   const prompt = 'A teacher teaches ' + subject + ' to ' + yearGroups + '. ' +
-    'Write a short, realistic example of a teacher using an AI chatbot prompt in their ' + subject + ' lessons. ' +
+    'Write a short, realistic example of a teacher using an AI chatbot prompt in their ' + subject + ' lessons - pick whichever subject from ' + subject + ' makes for the most interesting example.' +
     'Format your response as clean HTML matching this exact structure with no extra text, no markdown: ' +
     '<p style="margin:0; font-size:14px;">If a ' + subject + ' teacher asks: <em>"[a realistic AI prompt a ' + subject + ' teacher would use for ' + yearGroups + ']"</em></p>' +
     '<ul class="lesson-list" style="margin-top:8px;">' +
