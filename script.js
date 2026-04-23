@@ -585,7 +585,6 @@ function showScreen(id) {
 
 // ── Select a multiple choice answer ──
 function selectOption(questionId, optionIndex, nextScreen) {
-  if (questionId === 'q1') answerQ1 = optionIndex;
   if (questionId === 'q4') answerQ4 = optionIndex;
   if (questionId === 'q5') answerQ5 = optionIndex;
 
@@ -604,29 +603,13 @@ function selectOption(questionId, optionIndex, nextScreen) {
   }, 400);
 }
 
-// ── Submit age ──
-function submitAge() {
-  const input = document.getElementById('age-input');
-  const error = document.getElementById('age-error');
-  const val = parseInt(input.value);
-
-  if (!input.value || isNaN(val) || val < 18 || val > 99) {
-    error.textContent = 'Please enter a valid age between 18 and 99.';
-    return;
-  }
-
-  error.textContent = '';
-  answerQ2 = val;
-  showScreen('screen-q3');
-}
-
 // ── Build initial lesson state ──
 function buildLessonState() {
   lessonState = lessons.map(() => ({
     completed: false,
     skipped: false
   }));
-  if (answerQ4 === 2) {
+  if (answerQ4 === 1) {
     lessonState[1].skipped = true;
   }
   if (answerQ5 === 3 || answerQ5 === 4) {
@@ -1025,7 +1008,7 @@ async function generatePersonalisedLesson(retryCount = 0) {
 
 const schoolType = getSchoolType();
 
-const prompt = `You are an instructional designer creating content for a teacher CPD platform about AI in education. The teacher teaches ${subject} to the following year groups: ${getYearGroups()}. If multiple subjects are listed, split the content equally between them — for example include one way AI helps per subject, one example per subject. Make the content difficulty level and examples specific to these year groups. If they teach more than one year group do not increase content from what is asked of you below, instead split the content equally between these year groups. So for example, you could have one example for one year, then an example for another. If you include a prompt example then have 'Prompt Example' in the heading of that section. Also have the prompt itself in bold.
+const prompt = `You are an instructional designer creating content for a teacher CPD platform about AI in education. The teacher teaches ${subject} to the following year groups: ${getYearGroups()}. If multiple subjects are listed, do an equal split of the content for each subject. Do not mix the subjects within one subsection. Make the content difficulty level and examples specific to these year groups. If they teach more than one year group do not increase content from what is asked of you below, instead split the content equally between these year groups. So for example, you could have one example for one year, then an example for another. If you include a prompt example then have 'Prompt Example' in the heading of that section. Also have the prompt itself in bold.
 
 IMPORTANT: You must write a FULL, DETAILED lesson with multiple sections. A short response is not acceptable. Aim for 400 - 600 words of content.
 
@@ -1105,7 +1088,7 @@ async function generateLesson2Example() {
   const subject = getSubjectName();
   const yearGroups = getYearGroups();
   const prompt = 'A teacher teaches ' + subject + ' to ' + yearGroups + '. ' +
-    'Write a short, realistic example of a teacher using an AI chatbot prompt in their ' + subject + ' lessons - pick whichever subject from ' + subject + ' makes for the most interesting example.' +
+    'Write a short, realistic example of a teacher using an AI chatbot prompt in their ' + subject + ' lessons - pick whichever subject from ' + subject + ' makes for the most interesting example - ONLY do this for ONE subject.' +
     'Format your response as clean HTML matching this exact structure with no extra text, no markdown: ' +
     '<p style="margin:0; font-size:14px;">If a ' + subject + ' teacher asks: <em>"[a realistic AI prompt a ' + subject + ' teacher would use for ' + yearGroups + ']"</em></p>' +
     '<ul class="lesson-list" style="margin-top:8px;">' +
