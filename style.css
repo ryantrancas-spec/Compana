@@ -27,7 +27,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ── Nav ── */
 .nav {
   display: flex;
   align-items: center;
@@ -68,6 +67,13 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+
+.hero-logo {
+  height: 48px;
+  width: auto;
+  margin-bottom: 28px;
+  filter: brightness(0) invert(1);
 }
 
 .hero::before {
@@ -140,6 +146,9 @@ body {
   text-decoration: none;
   transition: all 0.2s ease;
   box-shadow: 0 4px 20px rgba(59,158,222,0.4);
+  border: none;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
 }
 
 .btn-primary:hover {
@@ -163,6 +172,25 @@ body {
 
 .btn-secondary:hover {
   background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
+}
+
+.btn-tertiary {
+  display: inline-block;
+  background: rgba(189, 224, 247, 0.15);
+  color: var(--blue-mid);
+  border: 1.5px solid rgba(189, 224, 247, 0.4);
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn-tertiary:hover {
+  background: rgba(189, 224, 247, 0.25);
+  color: var(--white);
   transform: translateY(-2px);
 }
 
@@ -334,7 +362,6 @@ body {
 .feature-list li {
   font-size: 13px;
   color: var(--muted);
-  padding-left: 16px;
   position: relative;
   line-height: 1.5;
   border-left: 2px solid var(--blue-mid);
@@ -379,7 +406,7 @@ body {
   line-height: 1.75;
 }
 
-/* ── Waitlist ── */
+/* ── Waitlist / Contact ── */
 .waitlist {
   padding: 100px 0;
   background: linear-gradient(135deg, var(--navy) 0%, #1a4a8a 100%);
@@ -401,21 +428,133 @@ body {
   font-size: 16px;
   color: rgba(255,255,255,0.7);
   max-width: 540px;
-  margin: 0 auto 36px;
+  margin: 0 auto 40px;
   line-height: 1.75;
-}
-
-.waitlist-emails {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
 }
 
 .waitlist-note {
   font-size: 13px;
   color: rgba(255,255,255,0.45);
+  margin-top: 20px;
+}
+
+/* ── Contact Form ── */
+.contact-form-wrap {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 48px;
+  text-align: left;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.contact-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-field label {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.3px;
+}
+
+.contact-field input,
+.contact-field textarea {
+  background: rgba(255,255,255,0.1);
+  border: 1.5px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--white);
+  width: 100%;
+  transition: border-color 0.2s ease;
+  resize: vertical;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+  color: rgba(255,255,255,0.35);
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  outline: none;
+  border-color: var(--blue);
+  background: rgba(255,255,255,0.15);
+}
+
+.contact-submit {
+  align-self: flex-start;
+  margin-top: 4px;
+}
+
+/* ── Contact Team Cards ── */
+.contact-team {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.contact-person {
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.contact-person-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-person-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 2px;
+}
+
+.contact-person-role {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.contact-person-email {
+  font-size: 13px;
+  color: var(--blue-mid);
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.contact-person-email:hover {
+  color: var(--white);
 }
 
 /* ── Footer ── */
@@ -483,6 +622,7 @@ body {
   .waitlist-title { font-size: 28px; }
   .footer-inner { flex-direction: column; text-align: center; }
   .footer-text { text-align: center; }
+  .contact-form-wrap { grid-template-columns: 1fr; gap: 32px; }
 }
 
 @media (max-width: 560px) {
@@ -491,7 +631,7 @@ body {
   .steps { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; align-items: center; }
   .btn-primary, .btn-secondary { width: 100%; text-align: center; }
-  .waitlist-emails { flex-direction: column; align-items: center; }
+  .contact-submit { width: 100%; text-align: center; }
 }
 
 /* ── Testimonials ── */

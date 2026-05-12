@@ -10,26 +10,26 @@
 </head>
 <body>
 
-  <!-- NAVBAR -->
+<!-- NAVBAR -->
   <nav class="nav">
     <img src="Compana_Logo_Transparent.png" alt="Compana" class="nav-logo" />
-    <a href="mailto:ryant@compana.it.com" class="nav-cta">Get Early Access →</a>
+    <a href="#contact" class="nav-cta">Join the Waitlist →</a>
   </nav>
-
+    
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
-      <div class="hero-badge">🚀 Coming Soon</div>
+      <div class="hero-badge">🗓️ Coming September 2026</div>
       <h1 class="hero-title">A personalised training tool to support teachers in the age of AI</h1>
       <p class="hero-sub">Compana is a bite-sized AI literacy programme built for UK teachers. Personalised to your subject, year groups and school — so you can use and guide AI with confidence.</p>
       <div class="hero-actions">
-        <a href="mailto:ryant@compana.it.com" class="btn-primary">Join the Waitlist →</a>
-        <a href="#features" class="btn-secondary">See What's Coming</a>
+        <a href="#features" class="btn-primary">See What's Coming</a>
+        <a href="#feedback" class="btn-secondary">Early Feedback</a>
       </div>
       <div class="hero-trust">
-        <span>✦ Free to use</span>
         <span>✦ Built for UK teachers</span>
-        <span>✦ No sign-up needed</span>
+        <span>✦ Aligned to internal school AI policies</span>
+        <span>✦ Personalised to each teachers' contexts</span>
         <span>✦ Aligned to DfE guidance</span>
       </div>
     </div>
@@ -40,7 +40,7 @@
     <div class="section-inner">
       <div class="section-label">What's Inside</div>
       <h2 class="section-title">Everything a teacher needs to navigate AI confidently</h2>
-      <p class="section-sub">Compana brings together personalised learning, trusted resources, and school-level tools — all in one place.</p>
+      <p class="section-sub">Compana brings together personalised learning (specific to school policy, subject(s) taught and year group(s) taught, to ensure teachers can understand how to safely use and guide AI within their classroom in daily bites. We combine trusted resources and government guidance to ensure we help teachers stay compliant within their classroom AI usage.</p>
 
       <div class="features-grid">
 
@@ -154,38 +154,73 @@
     </div>
   </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="testimonials-inner">
-    <div class="testimonials-image">
-      <img src="Innovation_Showcase_Runway_Awards_2026_Watershed Bristol_PB Previews-1.jpeg" alt="Teachers using Compana" class="testimonial-img" />
-    </div>
-    <div class="testimonials-content">
-      <div class="section-label">Early Feedback</div>
-      <div class="testimonial-quote">
-        <div class="quote-mark">"</div>
-        <p class="quote-text">This is a nice CPD for teachers</p>
-        <p class="quote-author">— Secondary School Teacher</p>
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+  <section class="testimonials" id="feedback">
+    <div class="testimonials-inner">
+      <div class="testimonials-image">
+        <img src="Innovation_Showcase_Runway_Awards_2026_Watershed Bristol_PB Previews-1.jpeg" alt="Teachers using Compana" class="testimonial-img" />
       </div>
-      <div class="testimonial-quote">
-        <div class="quote-mark">"</div>
-        <p class="quote-text">I could see many of my teachers engaging with this</p>
-        <p class="quote-author">— Head of Sixth Form</p>
+      <div class="testimonials-content">
+        <div class="section-label">Early Feedback</div>
+        <div class="testimonial-quote">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">This is a nice CPD for teachers</p>
+          <p class="quote-author">— Secondary School Teacher</p>
+        </div>
+        <div class="testimonial-quote">
+          <div class="quote-mark">"</div>
+          <p class="quote-text">I could see many of my teachers engaging with this</p>
+          <p class="quote-author">— Head of Sixth Form</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-    
-  <!-- WAITLIST -->
-  <section class="waitlist">
+  </section>
+
+  <!-- CONTACT / WAITLIST -->
+  <section class="waitlist" id="contact">
     <div class="section-inner waitlist-inner">
       <h2 class="waitlist-title">Be the first to know when Compana launches</h2>
-      <p class="waitlist-sub">We're currently testing with a small group of UK teachers. Get in touch to join the waitlist or find out more about bringing Compana to your school.</p>
-      <div class="waitlist-emails">
-        <a href="mailto:ryant@compana.it.com" class="btn-primary">ryant@compana.it.com</a>
-        <a href="mailto:gabrielh@compana.it.com" class="btn-primary">gabrielh@compana.it.com</a>
+      <p class="waitlist-sub">We're currently testing with a small group of UK teachers. Fill in the form below and we'll be in touch.</p>
+
+      <div class="contact-form-wrap">
+        <div class="contact-form-fields">
+          <div class="contact-field">
+            <label for="cf-name">Your name</label>
+            <input type="text" id="cf-name" placeholder="e.g. Sarah Jones" />
+          </div>
+          <div class="contact-field">
+            <label for="cf-role">Job position</label>
+            <input type="text" id="cf-role" placeholder="e.g. Head of Science, Year 6 Teacher" />
+          </div>
+          <div class="contact-field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" rows="4" placeholder="Tell us a bit about yourself, your school, or any questions you have…"></textarea>
+          </div>
+          <button class="btn-primary contact-submit" onclick="sendContactForm()">Send Message →</button>
+        </div>
+
+        <div class="contact-team">
+          <div class="contact-person">
+            <div class="contact-person-avatar">RT</div>
+            <div>
+              <div class="contact-person-name">Ryan Trancas</div>
+              <div class="contact-person-role">General enquiries</div>
+              <a href="mailto:ryant@compana.it.com" class="contact-person-email">ryant@compana.it.com</a>
+            </div>
+          </div>
+          <div class="contact-person">
+            <div class="contact-person-avatar">GH</div>
+            <div>
+              <div class="contact-person-name">Gabriel H.</div>
+              <div class="contact-person-role">Schools &amp; partnerships</div>
+              <a href="mailto:gabrielh@compana.it.com" class="contact-person-email">gabrielh@compana.it.com</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="waitlist-note">Or reach out directly about school partnerships and early access.</p>
+
+      <p class="waitlist-note">Your message will be sent to both members of the Compana team.</p>
     </div>
   </section>
 
@@ -195,11 +230,33 @@
       <img src="Compana_Logo_Transparent.png" alt="Compana" class="footer-logo" />
       <p class="footer-text">2026 Compana. Built for UK teachers. Aligned to DfE guidance on AI in education.</p>
       <div class="footer-links">
-        <a href="mailto:ryant@compana.it.com">Contact</a>
         <a href="https://www.gov.uk/government/publications/generative-artificial-intelligence-in-education" target="_blank">DfE Guidance</a>
       </div>
     </div>
   </footer>
+
+  <script>
+    function sendContactForm() {
+      const name = document.getElementById('cf-name').value.trim();
+      const role = document.getElementById('cf-role').value.trim();
+      const message = document.getElementById('cf-message').value.trim();
+
+      if (!name || !message) {
+        alert('Please fill in your name and a message before sending.');
+        return;
+      }
+
+      const subject = encodeURIComponent('Compana Waitlist — ' + name);
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Job position: ' + (role || 'Not provided') + '\n\n' +
+        'Message:\n' + message
+      );
+
+      const to = 'ryant@compana.it.com,gabrielh@compana.it.com';
+      window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
+    }
+  </script>
 
 </body>
 </html>
