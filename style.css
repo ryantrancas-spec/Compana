@@ -715,3 +715,27 @@ body {
     font-size: 22px;
   }
 }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+}
+.nav-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.nav-links a:hover { color: var(--blue); }
+
+@media (max-width: 900px) {
+  .nav-links { display: none; } /* or build a 
+hamburger menu */
+}
+
+.contact-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}

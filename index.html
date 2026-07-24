@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Compana — AI Literacy for Teachers</title>
+
+  <!-- ADD THESE -->
+  <meta name="description" content="Compana is a bite-sized AI literacy programme for UK teachers, personalised to your subject, year group and school." />
+  <meta property="og:title" content="Compana — AI Literacy for Teachers" />
+  <meta property="og:description" content="A personalised training tool to support teachers in the age of AI." />
+
+  <!-- END ADD -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -13,6 +21,12 @@
 <!-- NAVBAR -->
   <nav class="nav">
     <img src="Compana_Logo_Transparent.png" alt="Compana" class="nav-logo" />
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#contact">Contact</a>
+    </div>
     <a href="#contact" class="nav-cta">Join the Waitlist →</a>
   </nav>
     
@@ -117,7 +131,7 @@
   </section>
 
   <!-- HOW IT WORKS -->
-  <section class="how-it-works">
+  <section class="how-it-works" id="how-it-works">
     <div class="section-inner">
       <div class="section-label">How It Works</div>
       <h2 class="section-title">From uncertain to confident in minutes</h2>
@@ -155,7 +169,6 @@
   </section>
 
   <!-- TESTIMONIALS -->
-  <section class="testimonials">
   <section class="testimonials" id="feedback">
     <div class="testimonials-inner">
       <div class="testimonials-image">
@@ -255,6 +268,19 @@
 
       const to = 'ryant@compana.it.com,gabrielh@compana.it.com';
       window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
+
+      const btn = document.querySelector('.contact-submit');
+      const originalText = btn.textContent;
+      btn.textContent = 'Opening your email app...';
+      btn.disabled = true;
+
+      window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
+
+  // Reset the button after a couple seconds in case the user comes back to the page
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.disabled = false;
+      }, 2500);
     }
   </script>
 
